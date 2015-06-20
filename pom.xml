@@ -21,10 +21,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <prerequisites>
-        <maven>3.0</maven>
-    </prerequisites>
-
     <parent>
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
@@ -33,36 +29,90 @@
 
     <groupId>org.apache.streams</groupId>
     <artifactId>streams-master</artifactId>
-    <name>Apache Streams :: streams-master (Master POM)</name>
-    <description>Apache Streams Master Project</description>
+    <name>Apache Streams :: streams-master</name>
+    <description>Apache Streams Master Pom</description>
     <packaging>pom</packaging>
     <version>0.3-incubating-SNAPSHOT</version>
 
     <inceptionYear>2012</inceptionYear>
 
-    <url>http://incubator.apache.org/streams</url>
+    <url>http://streams.incubator.apache.org/${project.version}/${project.artifactId}</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
     <scm>
-        <connection>scm:svn:https://svn.apache.org/repos/asf/incubator/streams/streams-master-pom/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/incubator/streams/streams-master-pom/trunk</developerConnection>
-        <url>https://svn.apache.org/repos/asf/incubator/streams/streams-master-pom/trunk</url>
+        <connection>scm:git:git@github.com:apache/incubator-streams-master.git</connection>
+        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-streams-master.git</developerConnection>
+        <url>scm:git:git@github.com:apache/incubator-streams-master.git</url>
     </scm>
 
-    <mailingLists>
-
-        <mailingList>
-            <name>Streams Developer List</name>
-            <subscribe>dev-subscribe@streams.incubator.apache.org</subscribe>
-            <unsubscribe>dev-unsubscribe@streams.incubator.apache.org</unsubscribe>
-            <post>mailto:dev@rstreams.incubator.apache.org</post>
-            <archive>http://mail-archives.apache.org/mod_mbox/streams-dev/</archive>
-        </mailingList>
-
-    </mailingLists>
-
     <issueManagement>
+        <system>JIRA</system>
         <url>https://issues.apache.org/jira/browse/STREAMS</url>
     </issueManagement>
+
+    <ciManagement>
+        <system>jenkins</system>
+        <url>http://builds.apache.org/job/Streams%20Master/</url>
+    </ciManagement>
+
+    <prerequisites>
+        <maven>3.0.5</maven>
+    </prerequisites>
+
+    <mailingLists>
+        <mailingList>
+            <name>Dev Mailing List</name>
+            <post>dev@streams.incubator.apache.org</post>
+            <subscribe>dev-subscribe@streams.incubator.apache.org</subscribe>
+            <unsubscribe>dev-unsubscribe@streams.incubator.apache.org</unsubscribe>
+        </mailingList>
+        <mailingList>
+            <name>User Mailing List</name>
+            <post>user@streams.incubator.apache.org</post>
+            <subscribe>user-subscribe@streams.incubator.apache.org</subscribe>
+            <unsubscribe>user-unsubscribe@streams.incubator.apache.org</unsubscribe>
+        </mailingList>
+    </mailingLists>
+
+    <repositories>
+        <repository>
+            <id>apache-repo</id>
+            <name>Apache Repository</name>
+            <url>https://repository.apache.org/content/repositories/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>streams.releases</id>
+            <name>Streams Releases</name>
+            <url>${release.repository.url}</url>
+        </repository>
+        <!-- Snapshots (not-releases) are published to this repository -->
+        <snapshotRepository>
+            <id>streams.snapshots</id>
+            <name>Streams Snapshots</name>
+            <url>${snapshot.repository.url}</url>
+        </snapshotRepository>
+        <site>
+            <id>site.streams.project</id>
+            <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/streams-master</url>
+        </site>
+    </distributionManagement>
 
     <properties>
 
