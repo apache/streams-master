@@ -135,6 +135,7 @@
         <build-helper.plugin.version>1.8</build-helper.plugin.version>
         <compiler.plugin.version>3.0</compiler.plugin.version>
         <clean.plugin.version>2.6</clean.plugin.version>
+        <depgraph.plugin.version>1.0.2</depgraph.plugin.version>
         <docker.plugin.version>0.11.5-M1</docker.plugin.version>
         <enforcer.plugin.version>1.3.1</enforcer.plugin.version>
         <failsafe.plugin.version>2.17</failsafe.plugin.version>
@@ -437,6 +438,11 @@
                         <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>com.github.ferstl</groupId>
+                    <artifactId>depgraph-maven-plugin</artifactId>
+                    <version>1.0.2</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -516,6 +522,7 @@
                     <maxmemory>1g</maxmemory>
                 </configuration>
             </plugin>
+
         </plugins>
 
     </build>
@@ -650,6 +657,11 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>com.github.ferstl</groupId>
+                        <artifactId>depgraph-maven-plugin</artifactId>
+                        <version>${depgraph.plugin.version}</version>
+                    </plugin>
                 </plugins>
             </build>
             <reporting>
@@ -683,6 +695,11 @@
                     <plugin>
                         <artifactId>maven-site-plugin</artifactId>
                         <version>${site.plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.ferstl</groupId>
+                        <artifactId>depgraph-maven-plugin</artifactId>
+                        <version>${depgraph.plugin.version}</version>
                     </plugin>
                 </plugins>
             </reporting>
