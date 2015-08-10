@@ -132,6 +132,7 @@
         </release.repository.url>
 
         <!-- Plugin and Plugin Dependency Versions -->
+        <apache-rat.plugin.version>0.11</apache-rat.plugin.version>
         <build-helper.plugin.version>1.8</build-helper.plugin.version>
         <compiler.plugin.version>3.0</compiler.plugin.version>
         <clean.plugin.version>2.6</clean.plugin.version>
@@ -603,6 +604,7 @@
                     <plugin>
                         <groupId>org.apache.rat</groupId>
                         <artifactId>apache-rat-plugin</artifactId>
+                        <version>${apache-rat.plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>verify</phase>
@@ -700,6 +702,11 @@
                         <groupId>com.github.ferstl</groupId>
                         <artifactId>depgraph-maven-plugin</artifactId>
                         <version>${depgraph.plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.rat</groupId>
+                        <artifactId>apache-rat-plugin</artifactId>
+                        <version>${apache-rat.plugin.version}</version>
                     </plugin>
                 </plugins>
             </reporting>
