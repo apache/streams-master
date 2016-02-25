@@ -36,7 +36,7 @@
 
     <inceptionYear>2012</inceptionYear>
 
-    <url>http://streams.incubator.apache.org/${project.version}/${project.artifactId}</url>
+    <url>http://people.apache.org/sblackmon/${project.version}/${project.artifactId}</url>
 
     <licenses>
         <license>
@@ -109,8 +109,8 @@
             <url>${snapshot.repository.url}</url>
         </snapshotRepository>
         <site>
-            <id>site.streams.project</id>
-            <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/streams-master</url>
+            <id>site.streams.sblackmon.home</id>
+            <url>scp://people.apache.org/home/sblackmon/public_html/0.3-incubating-SNAPSHOT/streams-master/</url>
         </site>
     </distributionManagement>
 
@@ -153,7 +153,7 @@
         <site.plugin.version>3.4</site.plugin.version>
         <source.plugin.version>2.4</source.plugin.version>
         <surefire.plugin.version>2.17</surefire.plugin.version>
-        <wagon.plugin.version>2.8</wagon.plugin.version>
+        <wagon.plugin.version>2.5</wagon.plugin.version>
         <war.plugin.version>2.5</war.plugin.version>
 
         <!-- Library Dependency Versions -->
@@ -204,14 +204,6 @@
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>${clean.plugin.version}</version>
-                    <configuration>
-                        <filesets>
-                            <fileset>
-                                <directory>src/site/resources</directory>
-                                <followSymlinks>false</followSymlinks>
-                            </fileset>
-                        </filesets>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -424,6 +416,11 @@
                         </dependency>
                         <dependency>
                             <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh</artifactId>
+                            <version>${wagon.plugin.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.maven.wagon</groupId>
                             <artifactId>wagon-scm</artifactId>
                             <version>${wagon.plugin.version}</version>
                         </dependency>
@@ -543,7 +540,7 @@
 
         </plugins>
 
-        
+
     </build>
 
     <reporting>
@@ -754,14 +751,13 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-site-plugin</artifactId>
-                        <version>${site.plugin.version}</version>
                     </plugin>
                     <plugin>
                         <groupId>com.github.ferstl</groupId>
                         <artifactId>depgraph-maven-plugin</artifactId>
                         <version>${depgraph.plugin.version}</version>
                     </plugin>
-		    <plugin>
+		                <plugin>
                         <groupId>org.apache.rat</groupId>
                         <artifactId>apache-rat-plugin</artifactId>
                         <version>${apache-rat.plugin.version}</version>
