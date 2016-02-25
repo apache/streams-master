@@ -65,6 +65,7 @@
             <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-contrib/index.html" />
             <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-components/index.html"  />
             <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-contrib/index.html"  />
+            <item name="Browse the streams-project javadocs" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/apidocs/index.html" />
         </menu>
         <menu name="Foundation">
           <item name="Foundation Info" href="http://www.apache.org/" />
