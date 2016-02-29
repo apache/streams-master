@@ -44,19 +44,31 @@
     <body>
         <breadcrumbs>
           <item name="Incubator" href="http://incubator.apache.org/"/>
+          <item name="Streams" href="http://streams.incubator.apache.org/"/>
         </breadcrumbs>
         <menu ref="parent" inherit="top"/>
-        <menu name="Project Overview">
+        <menu name="Overview">
             <item name="Overview" href="index.html" />
             <item name="Architecture" href="architecture.html" />
             <item name="Downloads" href="downloads.html" />
             <item name="Frequently Asked Questions" href="faq.html" />
         </menu>
+        <menu name="Details">
+          <item name="Project License" href="license.html" />
+          <item name="Mailing Lists" href="mail-lists.html" />
+          <item name="Project Team" href="team-list.html" />
+          <item name="Continuous Integration" href="integration.html"/>
+          <item name="Issue Tracking" href="issue-tracking.html" />
+        </menu>
+        <menu name="Projects">
+          <item name="streams-master" />
+          <item name="streams-project" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project" />
+          <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/" />
+        </menu>
         <menu name="Getting Started">
             <item name="Learn more about Activity Streams" href="http://activitystrea.ms" />
             <item name="Check out streams-project web site" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/" />
             <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-pojo/index.html" />
-            <item name="Check out streams-examples web site" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/" />
             <item name="Set up a local environment to run streams" />
             <item name="Set up a local database to store streams data" />
             <item name="Build and run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
@@ -68,7 +80,6 @@
         </menu>
         <menu name="Foundation">
           <item name="Foundation Info" href="http://www.apache.org/" />
-          <item name="License" href="http://apache.org/licenses/LICENSE-2.0.html" />
           <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html" />
           <item name="Thanks" href="http://www.apache.org/foundation/thanks.html" />
         </menu>
