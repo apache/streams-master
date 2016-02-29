@@ -68,29 +68,145 @@
     </prerequisites>
 
     <mailingLists>
-        <mailingList>
+      <!-- <mailingList>
+          <name>User Mailing List</name>
+          <post>user@streams.incubator.apache.org</post>
+          <subscribe>user-subscribe@streams.incubator.apache.org</subscribe>
+          <unsubscribe>user-unsubscribe@streams.incubator.apache.org</unsubscribe>
+          <archive>http://mail-archives.apache.org/mod_mbox/incubator-streams-user/</archive>
+      </mailingList> -->
+      <mailingList>
             <name>Dev Mailing List</name>
             <post>dev@streams.incubator.apache.org</post>
             <subscribe>dev-subscribe@streams.incubator.apache.org</subscribe>
             <unsubscribe>dev-unsubscribe@streams.incubator.apache.org</unsubscribe>
+            <archive>http://mail-archives.apache.org/mod_mbox/incubator-streams-dev/</archive>
         </mailingList>
         <mailingList>
-            <name>User Mailing List</name>
-            <post>user@streams.incubator.apache.org</post>
-            <subscribe>user-subscribe@streams.incubator.apache.org</subscribe>
-            <unsubscribe>user-unsubscribe@streams.incubator.apache.org</unsubscribe>
+            <name>Commits Mailing List</name>
+            <post>commits@streams.incubator.apache.org</post>
+            <subscribe>commits-subscribe@streams.incubator.apache.org</subscribe>
+            <unsubscribe>commits-unsubscribe@streams.incubator.apache.org</unsubscribe>
+            <archive>http://mail-archives.apache.org/mod_mbox/incubator-streams-commits/</archive>
         </mailingList>
     </mailingLists>
 
     <developers>
-        <developer>
+      <developer>
+          <id>rbaxter85</id>
+          <name>Ryan Baxter</name>
+          <email>rbaxter85@apache.org</email>
+          <url>http://twitter.com/ryanjbaxter</url>
+          <roles>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
             <id>sblackmon</id>
             <name>Steve Blackmon</name>
             <email>sblackmon@apache.org</email>
-            <url>https://github.com/steveblackmon</url>
-            <organization>Apache Software Foundation</organization>
-            <organizationUrl>http://streams.incubator.apache.org</organizationUrl>
+            <url>http://twitter.com/steveblackmon</url>
+            <roles>
+              <role>PPMC Member</role>
+              <role>Committer</role>
+            </roles>
+            <properties>
+              <picUrl>https://avatars.githubusercontent.com/steveblackmon</picUrl>
+            </properties>
         </developer>
+        <developer>
+          <id>rdouglas</id>
+          <name>Robert Douglas</name>
+          <email>rdouglas@apache.org</email>
+          <roles>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+        </developer>
+        <developer>
+          <id>ate</id>
+          <name>Ate Douma</name>
+          <email>ate@apache.org</email>
+          <url>http://twitter.com/atedouma</url>
+          <roles>
+            <role>Mentor</role>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
+          <id>rebanks</id>
+          <name>Ryan Ebanks</name>
+          <email>rebanks@apache.org</email>
+          <url>http://twitter.com/ebanksre</url>
+          <roles>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
+          <id>chansen</id>
+          <name>Carol Hansen</name>
+          <email>chansen@apache.org</email>
+          <url>http://twitter.com/carolbirgitta</url>
+          <roles>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
+          <id>ahart</id>
+          <name>Andrew Hart</name>
+          <email>ahart@apache.org</email>
+          <url>http://twitter.com/andrewfhart</url>
+          <roles>
+            <role>Mentor</role>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
+          <id>mfranklin</id>
+          <name>Matt Franklin</name>
+          <email>mfranklin@apache.org</email>
+          <url>http://twitter.com/mattfranklin</url>
+          <roles>
+            <role>Mentor</role>
+            <role>PPMC Member</role>
+            <role>Committer</role>
+          </roles>
+      </developer>
+      <developer>
+        <id>letourneau</id>
+        <name>Jason Letourneau</name>
+        <email>letourneau@apache.org</email>
+        <url>http://twitter.com/jletourneau8080</url>
+        <roles>
+          <role>PPMC Member</role>
+          <role>Committer</role>
+        </roles>
+      </developer>
+      <developer>
+        <id>craigmcc</id>
+        <name>Craig McClanahan</name>
+        <email>craigmcc@apache.org</email>
+        <url>http://twitter.com/craigmcclanahan</url>
+        <roles>
+          <role>Mentor</role>
+          <role>PPMC Member</role>
+          <role>Committer</role>
+        </roles>
+      </developer>
+      <developer>
+        <id>dsullivan</id>
+        <name>Danny Sullivan</name>
+        <email>dsullivan@apache.org</email>
+        <url>http://twitter.com/dbsullivan23</url>
+        <roles>
+          <role>PPMC Member</role>
+          <role>Committer</role>
+        </roles>
+      </developer>
     </developers>
 
     <repositories>
@@ -461,13 +577,6 @@
                     <version>${war.plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>${reports.plugin.version}</version>
-                    <configuration>
-                        <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${dependency.plugin.version}</version>
@@ -564,24 +673,34 @@
     </build>
 
     <reporting>
-      <plugins>
+        <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${reports.plugin.version}</version>
+                <configuration>
+                  <customBundle>${project.basedir}/src/site/custom/project-info-report.properties</customBundle>
+                  <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
                 <reportSets>
                   <reportSet>
                     <reports><!-- select reports -->
-                      <report>cim</report>
+                      <!--<report>cim</report>-->
+                      <!--<report>scm</report>-->
                       <report>license</report>
                       <report>mailing-list</report>
                       <report>project-team</report>
+                      <report>scm</report>
+                      <report>help</report>
                       <report>issue-tracking</report>
+                      <report>dependencies</report>
+                      <report>dependency-info</report>
+                      <report>dependency-management</report>
                       <report>distribution-management</report>
+                      <report>plugin-management</report>
                     </reports>
                   </reportSet>
                 </reportSets>
-                <configuration>
-                  <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>

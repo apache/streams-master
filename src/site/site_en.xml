@@ -59,6 +59,12 @@
           <item name="Project Team" href="team-list.html" />
           <item name="Continuous Integration" href="integration.html"/>
           <item name="Issue Tracking" href="issue-tracking.html" />
+          <item name="Source Repositories" href="source-repository.html" />
+          <item name="Dependency Info" href="dependency-info.html" />
+          <item name="Distribution Management" href="distribution-management.html" />
+          <item name="Plugin Management" href="plugin-management.html" />
+          <item name="Release Setup" href="release-setup.html" />
+          <item name="Release Process" href="release.html" />
         </menu>
         <menu name="Projects">
           <item name="streams-master" />
@@ -82,6 +88,10 @@
           <item name="Foundation Info" href="http://www.apache.org/" />
           <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html" />
           <item name="Thanks" href="http://www.apache.org/foundation/thanks.html" />
+        </menu>
+        <menu name="Other Resources">
+          <item name="Streams Proposal Wiki Page" href="http://wiki.apache.org/incubator/StreamsProposal" />
+          <item name="ActivityStreams Specifications" href="http://activitystrea.ms/specs/" />
         </menu>
     </body>
 </project>
