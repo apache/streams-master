@@ -36,7 +36,8 @@
 
     <inceptionYear>2012</inceptionYear>
 
-    <url>http://people.apache.org/sblackmon/${project.version}/${project.artifactId}</url>
+    <!-- <url>http://people.apache.org/sblackmon/${project.version}/${project.artifactId}</url> -->
+    <url>http://streams.incubator.apache.org/site/${project.version}/${project.artifactId}</url>
 
     <licenses>
         <license>
@@ -236,9 +237,13 @@
             <url>${snapshot.repository.url}</url>
         </snapshotRepository>
         <site>
-            <id>site.streams.sblackmon.home</id>
-            <url>scp://people.apache.org/home/sblackmon/public_html/0.3-incubating-SNAPSHOT/streams-master/</url>
+            <id>site.streams.master</id>
+            <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}/</url>
         </site>
+        <!-- <site>
+            <id>site.streams.sblackmon.home</id>
+            <url>scp://people.apache.org/home/sblackmon/public_html/${project.version}/${project.artifactId}/</url>
+        </site> -->
     </distributionManagement>
 
     <properties>
@@ -705,6 +710,9 @@
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${site.plugin.version}</version>
+                <configuration>
+                    <topSiteURL>scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}</topSiteURL>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.github.ferstl</groupId>

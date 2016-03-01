@@ -29,9 +29,9 @@ Apache Streams is not
 * one-size-fits-all
 * only useful for projects fully dedicated to activity streams datasets
 
-The primary Streams git repository incubator-streams (org.apache.streams:streams-project) contains a library of modules inputs, outputs, and reusable components for transforming and enriching data streams.  Similar modules can also be hosted externally - so long as they publish maven artifacts compatible with your version of streams, you can import and use them in your streams easily.
+The primary Streams git repository incubator-streams (org.apache.streams:streams-project) contains a library of modules inputs, outputs, and reusable components for tranforming and enriching data streams.  Similar modules can also be hosted externally - so long as they publish maven artifacts compatible with your version of streams, you can import and use them in your streams easily.
 
-The streams community also supports a separate repository incubator-streams-examples (org.apache.streams:streams-examples) which contains a library of simple streams that are 'ready-to-run'.  Look here to see what Streams user code look like.
+The streams community also supports a seperate repository incubator-streams-examples (org.apache.streams:streams-examples) which contains a library of simple streams that are 'ready-to-run'.  Look here to see what Streams user code look like.
 
 ###    Why bother with any data framework at all?
 
@@ -49,9 +49,9 @@ Or maybe by joining forces with others who have more than just a passing interes
 
 ###    How is streams different than "*processing framework*"?
 
-You don't have to look hard to find great data processing frameworks for batch or for real-time.  Storm, Spark, Samza, Flink, and Google Cloud Dataflow (soon-to-be Apache Beam) are mature and well-documented.  NiFi and Apex are interesting new options.  At the core these platforms help you specify inputs, outputs, and a directed graph of computation and then run your code at scale.
+You don't have to look hard to find great data processing frameworks for batch or for real-time.  Storm, Spark, Samza, Flink, and Dataflow are well-known, well-documented, and solid.  At the core these platforms help you specify inputs, outputs, and a directed graph of computation and then run your code at scale.
 
-Streams supports a similar computational model, but is more focused on intelligently modeling the data that will flow through the stream than on stream execution.  In this sense Streams is an alternative to avro or protocol buffers which prioritizes flexibility, expressivity, interoperability, and tooling ahead of speed or compute efficiency.
+Streams supports a similar computational model, but is more focused on intelligently modeling the data that will flow through the stream.  In this sense Streams is an alternative to avro or protocol buffers which prioritizes flexibility, expressivity, interoperability, and tooling ahead of speed or compute efficiency.
 
 Streams also seeks to make it easy to design and evolve streams, and to configure complex streams sensibly.  Where many processing frameworks leave all business logic and configuration issues to the developer, streams modules are designed to mix-and-match.  Streams modules expect to be embedded with other frameworks and are organized to make that process painless.
 
@@ -72,21 +72,19 @@ A better long-term approach is to archive each data series you observe, and labe
 ###    What if I need data from "*specific API*"?
 
 No problem - anyone can write a Streams provider.  The project contains providers that use a variety of strategies to generate near-real-time data streams, including:
-
-* sockets
-* webhooks
-* polling
-* scraping
+ - sockets
+ - webhooks
+ - polling
+ - scraping
 
 Providers can run continuously and pass-through new data, or they can work sequentially through a backlog of items.  If you need to collect so many items that you can't fit all of their ids in the memory available to your stream, a stream provider can read an arbitrarily long sequence of ids and hand those off to other providers for collection.
 
 ###    What if I want to keep data in "*unsupported database*"?
 
 No problem - anyone can write a Streams persist reader or persist writer.  The project contains persist writers that:
-
-* write documents efficiently with batch-style binary indexing
-* write documents one-by-one to services with REST api endpoints
-* write data to local or distributed buffers.
+ - write documents efficiently with batch-style binary indexing
+ - write documents one-by-one to services with REST api endpoints
+ - write data to local or distributed buffers.
 
 If you just want to use streams providers to collect and feed incoming data into a queueing system to work with outside of streams that's just fine.
 

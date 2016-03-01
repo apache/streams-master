@@ -4,7 +4,7 @@ This project uses [Maven](http://maven.apache.org/ "Maven") for dependency manag
 
 Below are some examples of how to import Streams artifacts into your project.
 
-Please note that your project should import multiple artifacts corresponding to the Components in your stream and the Runtime used to execute your stream.
+Please note that your project should import multiple artifacts corresponding to the Components in your stream(s) and the Runtime used to execute your stream(s).
 
 You should *not* import streams-master (depicted below), because it does not do anything interesting.
 
