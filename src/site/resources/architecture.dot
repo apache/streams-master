@@ -1,0 +1,40 @@
+digraph g {
+
+  graph [compound = true];
+
+  //presentation
+  splines = true;
+  overlap = false;
+  rankdir = TB;
+
+  subgraph cluster_upstream {
+    label="Upstream Systems";
+    upstream_databases [label="Databases"]
+    upstream_generators [label="Generators"]
+    upstream_queues [label="Queues"]
+  }
+
+  subgraph cluster_streams {
+    label="Apache Streams Pipelines";
+    providers [label="Providers"]
+    persistReaders [label="PersistReaders"]
+    processors [label="Processors"]
+    persistWriters [label="PersistWriters"]
+  }
+
+  subgraph cluster_downstream {
+    label="Downstream Systems";
+    downstream_databases [label="Databases"]
+    downstream_queues [label="Queues"]
+  }
+
+  upstream_generators -> providers
+  upstream_queues -> persistReaders
+  upstream_databases -> persistReaders
+  providers,persistReaders -> processors
+  processors -> processors
+  processors -> persistWriters
+  persistWriters -> downstream_databases,downstream_queues
+
+
+}

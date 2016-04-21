@@ -17,6 +17,7 @@
   ~ under the License.
   -->
 <project>
+    <publishDate position="right"/>
     <version position="right"/>
     <skin>
         <groupId>org.apache.maven.skins</groupId>
@@ -26,12 +27,13 @@
     <custom>
       <fluidoSkin>
         <topBarEnabled>true</topBarEnabled>
+        <navBarStyle>navbar-inverse</navBarStyle>
         <sideBarEnabled>false</sideBarEnabled>
       </fluidoSkin>
     </custom>
     <bannerLeft>
         <name>Apache Streams</name>
-        <src>./images/streams_logo.jpg</src>
+        <src>http://streams.incubator.apache.org/images/streams_logo.jpg</src>
         <href>http://streams.incubator.apache.org</href>
         <height>100</height>
         <width>150</width>
@@ -50,6 +52,7 @@
         <menu name="Overview">
             <item name="Overview" href="index.html" />
             <item name="Architecture" href="architecture.html" />
+            <item name="Concepts" href="concepts.html" />
             <item name="Downloads" href="downloads.html" />
             <item name="Frequently Asked Questions" href="faq.html" />
         </menu>
@@ -68,8 +71,8 @@
         </menu>
         <menu name="Projects">
           <item name="streams-master" />
-          <item name="streams-project" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project" />
-          <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/" />
+          <item name="streams-project" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project" />
+          <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-examples/" />
         </menu>
         <menu name="Getting Started">
             <item name="Learn more about Activity Streams" href="http://activitystrea.ms" />
