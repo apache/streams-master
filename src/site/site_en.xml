@@ -25,11 +25,11 @@
         <version>1.4</version>
     </skin>
     <custom>
-      <fluidoSkin>
-        <topBarEnabled>true</topBarEnabled>
-        <navBarStyle>navbar-inverse</navBarStyle>
-        <sideBarEnabled>false</sideBarEnabled>
-      </fluidoSkin>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <navBarStyle>navbar-inverse</navBarStyle>
+            <sideBarEnabled>false</sideBarEnabled>
+        </fluidoSkin>
     </custom>
     <bannerLeft>
         <name>Apache Streams</name>
@@ -45,8 +45,8 @@
     </bannerRight>
     <body>
         <breadcrumbs>
-          <item name="Incubator" href="http://incubator.apache.org/"/>
-          <item name="Streams" href="http://streams.incubator.apache.org/"/>
+            <item name="Incubator" href="http://incubator.apache.org/"/>
+            <item name="Streams" href="http://streams.incubator.apache.org/"/>
         </breadcrumbs>
         <menu ref="parent" inherit="top"/>
         <menu name="Overview">
@@ -57,44 +57,49 @@
             <item name="Frequently Asked Questions" href="faq.html" />
         </menu>
         <menu name="Details">
-          <item name="Project License" href="license.html" />
-          <item name="Mailing Lists" href="mail-lists.html" />
-          <item name="Project Team" href="team-list.html" />
-          <item name="Continuous Integration" href="integration.html"/>
-          <item name="Issue Tracking" href="issue-tracking.html" />
-          <item name="Source Repositories" href="source-repository.html" />
-          <item name="Dependency Info" href="dependency-info.html" />
-          <item name="Distribution Management" href="distribution-management.html" />
-          <item name="Plugin Management" href="plugin-management.html" />
-          <item name="Release Setup" href="release-setup.html" />
-          <item name="Release Process" href="release.html" />
+            <item name="Project License" href="license.html" />
+            <item name="Mailing Lists" href="mail-lists.html" />
+            <item name="Project Team" href="team-list.html" />
+            <item name="Continuous Integration" href="integration.html"/>
+            <item name="Issue Tracking" href="issue-tracking.html" />
+            <item name="Source Repositories" href="source-repository.html" />
+            <item name="Dependency Info" href="dependency-info.html" />
+            <item name="Distribution Management" href="distribution-management.html" />
+            <item name="Plugin Management" href="plugin-management.html" />
+            <item name="Release Setup" href="release-setup.html" />
+            <item name="Release Process" href="release.html" />
         </menu>
         <menu name="Projects">
-          <item name="streams-master" />
-          <item name="streams-project" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project" />
-          <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-examples/" />
+            <item name="streams-master" />
+            <item name="streams-project" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project" />
+            <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-examples/" />
         </menu>
         <menu name="Getting Started">
-            <item name="Learn more about Activity Streams" href="http://activitystrea.ms" />
-            <item name="Check out streams-project web site" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/" />
-            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-pojo/index.html" />
-            <item name="Set up a local environment to run streams" />
-            <item name="Set up a local database to store streams data" />
-            <item name="Build and run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
-            <item name="Browse and search the twitter data you collected" />
-            <item name="View the schemas that describe twitter data" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-contrib/streams-provider-twitter/index.html" />
-            <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-contrib/index.html" />
-            <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-components/index.html"  />
-            <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/0.2-incubating/streams-project/streams-contrib/index.html"  />
+            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-pojo/index.html" />
+            <item name="View the schemas that describe twitter data" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/streams-provider-twitter/index.html" />
+            <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html" />
+            <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-components/index.html"  />
+            <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html"  />
+            <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html"  />
         </menu>
-        <menu name="Foundation">
-          <item name="Foundation Info" href="http://www.apache.org/" />
-          <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html" />
-          <item name="Thanks" href="http://www.apache.org/foundation/thanks.html" />
+        <menu name="Tutorial">
+            <item name="Build streams and streams-examples from source" href="tutorial/build.html" />
+            <item name="Create a local folder to configure streams" href="tutorial/environment.html"/>
+            <item name="Set up a local docker environment" href="tutorial/docker.html" />
+            <item name="Run a local database to store activity documents" href="tutorial/database.html" />
+            <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
+            <item name="Browse and search the twitter data you collected" href="tutorial/browse.html" />
         </menu>
         <menu name="Other Resources">
-          <item name="Streams Proposal Wiki Page" href="http://wiki.apache.org/incubator/StreamsProposal" />
-          <item name="ActivityStreams Specifications" href="http://activitystrea.ms/specs/" />
+            <item name="ActivityStreams Homepage" href="http://activitystrea.ms" />
+            <item name="ActivityStreams Specifications" href="http://activitystrea.ms/specs/" />
+            <item name="Streams Blog" href="http://blogs.apache.org/streams/" />
+            <item name="Streams Proposal Wiki Page" href="http://wiki.apache.org/incubator/StreamsProposal" />
+        </menu>
+        <menu name="Foundation">
+            <item name="Foundation Info" href="http://www.apache.org/" />
+            <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html" />
+            <item name="Thanks" href="http://www.apache.org/foundation/thanks.html" />
         </menu>
     </body>
 </project>
