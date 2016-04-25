@@ -42,9 +42,17 @@ Currently pushing website changes is a manual process performed by whomever is m
 
 This typically requires checking out the current website from SVN.
 
-    `svn co https://svn.apache.org/repos/infra/websites/production/streams/content`
-    `cd content`
-    
+    svn co https://svn.apache.org/repos/infra/websites/production/streams/content
+    cd content
+
+NOTE:
+
+Repositories should always be built and published in the following order:
+
+* streams-master
+* streams-project
+* streams-examples
+
 #### Preparing to publishing a new website version
 
 The instructions below presume:
@@ -54,32 +62,26 @@ The instructions below presume:
 
 If this is a brand new snapshot or release version, you first need to create a directory corresponding to the new version.
 
-> content$ mkdir site/${project.version}
-> content$ svn add site/${project.version}
-> content$ svn commit -m "svn add site/${project.version}"
+    mkdir site/${project.version}
+    svn add site/${project.version}
+    svn commit -m "svn add site/${project.version}"
     
 The first time a specific site is being published for this version, you must create the directory where it will be published.
 
-> content$ mkdir site/${project.version}/${project.artifactId}
-> content$ svn add site/${project.version}/${project.artifactId}
-> content$ svn commit -m "svn add site/${project.version}/${project.artifactId}"
+    mkdir site/${project.version}/${project.artifactId}
+    svn add site/${project.version}/${project.artifactId}
+    svn commit -m "svn add site/${project.version}/${project.artifactId}"
 
 If you are published over an existing snapshot, you must first remove the existing version and recreate an empty directory.
 
-> content$ rm -rf site/${project.version}/${project.artifactId}
-> content$ svn delete site/${project.version}/${project.artifactId}
-> content$ svn commit -m "svn delete site/${project.version}/${project.artifactId}"
-> content$ mkdir site/${project.version}/${project.artifactId}
-> content$ svn add site/${project.version}/${project.artifactId}
-> content$ svn commit -m "svn add site/${project.version}/${project.artifactId}"
+    rm -rf site/${project.version}/${project.artifactId}
+    svn delete site/${project.version}/${project.artifactId}
+    svn commit -m "svn delete site/${project.version}/${project.artifactId}"
+    mkdir site/${project.version}/${project.artifactId}
+    svn add site/${project.version}/${project.artifactId}
+    svn commit -m "svn add site/${project.version}/${project.artifactId}"
 
 The folder must exist and be empty for the publish steps to succeed.
-
-Repositories should always be built and published in the following order:
-
-* streams-master
-* streams-project
-* streams-examples
 
 #### Generating and publishing a new website version
  
@@ -102,23 +104,21 @@ First, ensure that you have local credentials capable of publishing the site.
 
 Next, generate SVG resources for all DOT diagrams in the source tree
 
-> $ for dot in $(find . -name *.dot); do dot -Tsvg $dot -o $dot.svg; done
+    for dot in $(find . -name *.dot); do dot -Tsvg $dot -o $dot.svg; done
    
 Then, generate the site that will be published
      
-> $ mvn clean site:site site:stage
+    mvn clean site:site site:stage
     
 At this point you can open target/staging/index.html and do a sanity check on the site you intend to publish.
 
 Finally, publish the site.
 
-> $ mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}
+    mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}
 
 Note the revision number checked in at the bottom of the maven logs.
 
-You should now be able to access the published site(s) via an absolute URL.
-
-    http://streams.incubator.apache.org/site/${project.version}/${project.artifactId}
+You should now be able to access the published site(s) via an absolute URL such as http://streams.incubator.apache.org/site/${project.version}/${project.artifactId}
     
 For example, website documentation from a recent release:
 
@@ -152,7 +152,7 @@ If you are promoting sites from all streams repositories simultaneously, the fil
 
     Redirect /site/latest/ /site/${project.version}
     
-If you want to publish sites at different versions across streams repositories, configure as follows:
+If you want to expose sites hosted under different versions across streams repositories:
 
     Redirect /site/latest/streams-master /site/0.3-incubating-SNAPSHOT/streams-master
     Redirect /site/latest/streams-project /site/0.2-incubating/streams-project

@@ -9,7 +9,9 @@ All of the steps below apply to both the master and project releases, unless oth
 1. Environment setup for releasing artifacts (same for SNAPSHOTs and releases)    
 
     1. Increase the default Java heap available to Maven (required for Java SE 6)   
-    >  export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
+
+            export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
+    
     2. Use the latest Sun 1.7.0 JDK
     3. Use Maven 3.2.1 or later
     4. Make sure the [Release Setup](release-setup.html) steps have been performed.
@@ -25,12 +27,17 @@ All of the steps below apply to both the master and project releases, unless oth
 
 3. Create a release candidate branch from master.
    X should start at 1 and increment if early release candidates fail to complete the release cycle.
->    $ git checkout master
->    $ git branch {$project.version}-rcX
+    
+    git checkout master
+    git branch {$project.version}-rcX
+    
 4. Verify the source has the required license headers before trying to release:
->    $ mvn -P apache-release clean rat:check -e -DskipTests
+
+        mvn -P apache-release clean rat:check -e -DskipTests
+    
 5. Do a dry run of the release:prepare step:  
->    $ mvn -P apache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
+
+        mvn -P apache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
 
     The dry run will not commit any changes back to SCM and gives you the opportunity to verify that the release process will complete as expected. You will be prompted for the following information :
 
@@ -49,16 +56,24 @@ All of the steps below apply to both the master and project releases, unless oth
     3. Verify signatures ([Verifying release signatures](#verify_signatures))
 
 7. Cleanup the release prepare files again:  
->        $ mvn -P apache-release release:clean
+
+        mvn -P apache-release release:clean
+    
 8. Prepare the release
     1. Run the "release:prepare" step for real this time. You'll be prompted for the same version information.
-    >  $ mvn -P apache-release -U clean release:prepare -DautoVersionSubmodules=true
+    
+            mvn -P apache-release -U clean release:prepare -DautoVersionSubmodules=true
+    
     2. Backup (zip or tar) your local release candidate directory in case you need to rollback the release after the next step is performed.
 9. Perform the release
     * This step will create a maven staging repository and site for use in testing and voting.
-    >   $ mvn -Papache-release -Darguments='-Dmaven.test.skip.exec=true' release:perform -Dgoals=deploy -DlocalRepoDirectory=. -DlocalCheckout=true
+    
+            mvn -Papache-release -Darguments='-Dmaven.test.skip.exec=true' release:perform -Dgoals=deploy -DlocalRepoDirectory=. -DlocalCheckout=true
+    
     * If your local OS userid doesn't match your Apache userid, then you'll have to also override the value provided by the OS to Maven for the site-deploy step to work. This is known to work for Linux, but not for Mac and unknown for Windows.*
-    >  -Duser.name=[your_apache_uid]
+
+            -Duser.name=[your_apache_uid]
+    
 10. Verify the Nexus release artifacts
     1. Verify the staged artifacts in the nexus repo     
         * https://repository.apache.org/index.html
@@ -84,19 +99,23 @@ All of the steps below apply to both the master and project releases, unless oth
         * Staging repositories (under Build Promotion) --> Name column --> org.apache.streams
         * Click checkbox of the closed staging repo (org.apache.streams-XXX) and select Release.
     2. Copy the source artifacts over to the distribution area  
->        $ svn co https://dist.apache.org/repos/dist/release/incubator/streams/releases ./streams-releases  (KEEP this directory until after the release process has been completed)
->        $ cd ./streams-releases
->        $ mkdir ${project.version}
->        $ cd ./${project.version}
->        $ wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip    
->        $ wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.asc   
->        $ wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.md5   
->        $ svn add ${project.name}-*
->        $ svn commit -m "Committing Source Release for ${project.name}-${project.version}
+
+            svn co https://dist.apache.org/repos/dist/release/incubator/streams/releases ./streams-releases  (KEEP this directory until after the release process has been completed)
+            cd ./streams-releases
+            mkdir ${project.version}
+            cd ./${project.version}
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip    
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.asc   
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.md5   
+            svn add ${project.name}-*
+            svn commit -m "Committing Source Release for ${project.name}-${project.version}
+    
     3. Create an official release tag from the successful release candidate tag.
->        $ git checkout streams-project-${project.version}-rcX
->        $ git tag -a streams-project-${project.version} -m 'release tag streams-project-${project.version}'
->        $ git push origin :refs/tags/streams-project-${project.version}
+    
+            git checkout streams-project-${project.version}-rcX
+            git tag -a streams-project-${project.version} -m 'release tag streams-project-${project.version}'
+            git push origin :refs/tags/streams-project-${project.version}
+    
     4. Update the staged website
         *  Update the downloads page to add new version using the mirrored URLs
         *  Modify the URL for the prior release to the archived URL for the release
@@ -117,15 +136,18 @@ All of the steps below apply to both the master and project releases, unless oth
 1. Reply to the initial vote email and prepend to the original subject -
      [CANCELED]
 2. Clean the release prepare files and hard reset the release candidate branch.
->     mvn -P apache-release release:clean
+
+        mvn -P apache-release release:clean
 
 3. Delete the git tag created by the release:perform step -
->     $ git tag -d streams-project-${project.version}-rcX
->     $ git push origin :refs/tags/streams-project-${project.version}-rcX
+
+        git tag -d streams-project-${project.version}-rcX
+        git push origin :refs/tags/streams-project-${project.version}-rcX
 
 4. Delete the build artifacts on people & www           
->     $ rm -rfv /www/people.apache.org/builds/streams/${project.version}
->     $ rm -rfv /www/www.apache.org/dist/streams/${project.version}
+
+        rm -rfv /www/people.apache.org/builds/streams/${project.version}
+        rm -rfv /www/www.apache.org/dist/streams/${project.version}
 
 5. Drop the nexus staging repo
     1. https://repository.apache.org/index.html
@@ -139,10 +161,10 @@ All of the steps below apply to both the master and project releases, unless oth
 ####Verifying release signatures
 On unix platforms the following command can be executed -
 
->      for file in `find . -type f -iname '*.asc'`
->      do
->          gpg --verify ${file}
->      done
+    for file in `find . -type f -iname '*.asc'`
+    do
+        gpg --verify ${file}
+    done
 
 You'll need to look at the output to ensure it contains only good signatures -
 
