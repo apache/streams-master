@@ -63,7 +63,16 @@ The first time a specific site is being published for this version, you must cre
 > content$ mkdir site/${project.version}/${project.artifactId}
 > content$ svn add site/${project.version}/${project.artifactId}
 > content$ svn commit -m "svn add site/${project.version}/${project.artifactId}"
-    
+
+If you are published over an existing snapshot, you must first remove the existing version and recreate an empty directory.
+
+> content$ rm -rf site/${project.version}/${project.artifactId}
+> content$ svn delete site/${project.version}/${project.artifactId}
+> content$ svn commit -m "svn delete site/${project.version}/${project.artifactId}"
+> content$ mkdir site/${project.version}/${project.artifactId}
+> content$ svn add site/${project.version}/${project.artifactId}
+> content$ svn commit -m "svn add site/${project.version}/${project.artifactId}"
+
 The folder must exist and be empty for the publish steps to succeed.
 
 Repositories should always be built and published in the following order:
