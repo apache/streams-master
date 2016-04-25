@@ -12,7 +12,7 @@ We'll assume you've got docker up and running.
 
 Run from your command line:
 
-  `docker ps`
+> $ docker ps
   
 If you see a (possibly empty) list of running containers, you are good.
 

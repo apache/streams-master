@@ -56,24 +56,24 @@ See [streams-project-index.html](http://streams.incubator.apache.org/site/0.2-in
 
 Run from your command line:
 
-  `git clone https://github.com/apache/incubator-streams`
-  `git clone https://github.com/apache/incubator-streams-examples`
+> git clone https://github.com/apache/incubator-streams
+> git clone https://github.com/apache/incubator-streams-examples
   
 ### Build Projects
 
 Run from your command line:
 
-  `export MAVEN_OPTS="-Xmx2G"`
-  `cd incubator-streams`
-  `mvn clean install -Dmaven.test.skip.exec=true`
+> export MAVEN_OPTS="-Xmx2G"
+> cd incubator-streams
+> mvn clean install -Dmaven.test.skip.exec=true
   
 | Possible result | Explanation |
 |-----------------|-------------|
 | BUILD SUCCESSFUL | You are all good |
 | BUILD FAILED | Check yourself |
   
-  `cd ../incubator-streams-examples`
-  `mvn clean package`
+> cd ../incubator-streams-examples
+> mvn clean package
   
 | Possible result | Explanation |
 |-----------------|-------------|

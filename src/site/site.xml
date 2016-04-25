@@ -71,23 +71,23 @@
         </menu>
         <menu name="Projects">
           <item name="streams-master" />
-          <item name="streams-project" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project" />
-          <item name="streams-examples" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-examples/" />
+          <item name="streams-project" href="http://streams.incubator.apache.org/site/latest/streams-project" />
+          <item name="streams-examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/" />
         </menu>
         <menu name="Getting Started">
-            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-pojo/index.html" />
-            <item name="View the schemas that describe twitter data" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/streams-provider-twitter/index.html" />
-            <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html" />
-            <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-components/index.html"  />
-            <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html"  />
-            <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/streams-contrib/index.html"  />
+            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/index.html" />
+            <item name="View the schemas that describe twitter data" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/streams-provider-twitter/index.html" />
+            <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html" />
+            <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-components/index.html"  />
+            <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
+            <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
         </menu>
         <menu name="Tutorial">
             <item name="Build streams and streams-examples from source" href="tutorial/build.html" />
             <item name="Create a local folder to configure streams" href="tutorial/environment.html"/>
             <item name="Set up a local docker environment" href="tutorial/docker.html" />
             <item name="Run a local database to store activity documents" href="tutorial/database.html" />
-            <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
+            <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/latest/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
             <item name="Browse and search the twitter data you collected" href="tutorial/browse.html" />
         </menu>
         <menu name="Other Resources">
