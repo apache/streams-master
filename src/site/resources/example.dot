@@ -9,26 +9,12 @@ digraph g {
 
   subgraph cluster_generators {
     label="generators";
-    generators_twitter [label="https://api.twitter.com"]
-    generators_facebook [label="https://api.facebook.com"]
     generators_youtube [label="https://api.youtube.com"]
     generators_instagram [label="https://api.instagram.com"]
   }
 
   subgraph cluster_providers {
     label="providers";
-    subgraph cluster_providers_twitter {
-      label="twitter";
-      providers_twitter_userstream [label="TwitterUserstreamProvider"]
-      providers_twitter_userinfo [label="TwitterUserInformationProvider"]
-      providers_twitter_timeline [label="TwitterTimelineProvider"]
-      providers_twitter_following [label="TwitterFollowingProvider"]
-    }
-    subgraph cluster_providers_facebook {
-      label="facebook";
-      providers_facebook_page [label="FacebookPageProvider"]
-      providers_facebook_pagefeed [label="FacebookPageFeedDataCollector"]
-    }
     subgraph cluster_providers_youtube {
       label="youtube";
       providers_youtube_channel [label="YoutubeChannelProvider"]
@@ -43,10 +29,6 @@ digraph g {
 
   subgraph cluster_processors {
     label="processors";
-    processors_twitter_activity [label="ActivityConverterProcessor"]
-    processors_twitter_activityobject [label="ActivityObjectConverterProcessor"]
-    processors_facebook_activity [label="FacebookPageActivitySerializer"]
-    processors_facebook_activityobject [label="FacebookPostActivitySerializer"]
     processors_youtube_activity [label="YoutubeTypeConverter"]
     processors_youtube_activityobject [label="YoutubeTypeConverter"]
     processors_instagram_activity [label="InstagramTypeConverter"]
@@ -55,39 +37,27 @@ digraph g {
 
   subgraph cluster_persisters_1 {
     label="persisters";
-    persisters_kinesis_writer_activity [label="KinesisPersistWriter"]
-    persisters_kinesis_writer_activityobject [label="KinesisPersistWriter"]
+    persisters_kinesis_writer [label="KinesisPersistWriter"]
+    persisters_kinesis_writer [label="KinesisPersistWriter"]
   }
 
+  subgraph cluster_queues {
+    label="queues";
+    kinesis [label="kinesis://" shape="box"]
+  }
   subgraph cluster_persisters_2 {
     label="persisters";
     persisters_elasticsearch [label="ElasticsearchPersistWriter"]
-    persisters_graph [label="GraphPersistWriter"]
     persisters_hdfs [label="WebHdfsPersistWriter"]
-    persisters_kinesis_reader_activity [label="KinesisPersistReader"]
-    persisters_kinesis_reader_activityobject [label="KinesisPersistReader"]
+    persisters_kinesis_reader [label="KinesisPersistReader"]
+    persisters_kinesis_reader [label="KinesisPersistReader"]
   }
 
   subgraph cluster_dbs {
     label="dbs";
     elasticsearch [label="elasticsearch"]
     hdfs [label="hdfs"]
-    neo4j [label="neo4j"]
   }
-
-  generators_twitter -> providers_twitter_userstream
-  generators_twitter -> providers_twitter_timeline
-  generators_twitter -> providers_twitter_following
-  generators_twitter -> providers_twitter_userinfo
-  providers_twitter_userinfo -> processors_twitter_activityobject [label="o.a.s.t.User"]
-  providers_twitter_userstream -> processors_twitter_activity [label="o.a.s.t.Tweet"]
-  providers_twitter_timeline -> processors_twitter_activity [label="o.a.s.t.Tweet"]
-  providers_twitter_following -> processors_twitter_activity [label="o.a.s.t.Follow"]
-
-  generators_facebook -> providers_facebook_page
-  generators_facebook -> providers_facebook_pagefeed
-  providers_facebook_page -> processors_facebook_activityobject [label="o.a.s.f.Page"]
-  providers_facebook_pagefeed -> processors_facebook_activity [label="o.a.s.f.Post\no.a.s.f.Comment"]
 
   generators_youtube -> providers_youtube_channel
   generators_youtube -> providers_youtube_video
@@ -99,26 +69,18 @@ digraph g {
   providers_instagram_userinfo -> processors_instagram_activityobject [label="o.a.s.i.UserInfoData"]
   providers_instagram_media -> processors_instagram_activity [label="o.a.s.i.MediaFeedData"]
 
-  processors_twitter_activityobject -> persisters_kinesis_writer_activityobject [label="o.a.s.p.j.Page"]
-  processors_twitter_activity -> persisters_kinesis_writer_activity [label="o.a.s.p.j.Post\no.a.s.p.j.Share\no.a.s.p.j.Follow"]
-  processors_facebook_activityobject -> persisters_kinesis_writer_activityobject [label="o.a.s.p.j.Page"]
-  processors_facebook_activity -> persisters_kinesis_writer_activity [label="o.a.s.p.j.Post\no.a.s.p.j.Comment"]
-  processors_youtube_activityobject -> persisters_kinesis_writer_activityobject [label="o.a.s.p.j.Page"]
-  processors_youtube_activity -> persisters_kinesis_writer_activity [label="o.a.s.p.j.Video\no.a.s.p.j.Comment"]
-  processors_instagram_activityobject -> persisters_kinesis_writer_activityobject [label="o.a.s.p.j.Page"]
-  processors_instagram_activity -> persisters_kinesis_writer_activity [label="o.a.s.p.j.Photo\no.a.s.p.j.Video\no.a.s.p.j.Comment"]
+  processors_youtube_activityobject -> persisters_kinesis_writer [label="o.a.s.p.j.Page"]
+  processors_youtube_activity -> persisters_kinesis_writer [label="o.a.s.p.j.Video\no.a.s.p.j.Comment"]
+  processors_instagram_activityobject -> persisters_kinesis_writer [label="o.a.s.p.j.Page"]
+  processors_instagram_activity -> persisters_kinesis_writer [label="o.a.s.p.j.Photo\no.a.s.p.j.Video\no.a.s.p.j.Comment"]
 
-  persisters_kinesis_writer_activity -> kinesis -> persisters_kinesis_reader_activity [label="o.a.s.p.j.Activity"]
-  persisters_kinesis_writer_activityobject -> kinesis -> persisters_kinesis_reader_activityobject [label="o.a.s.p.j.ActivityObject"]
+  persisters_kinesis_writer -> kinesis -> persisters_kinesis_reader [label="o.a.s.p.j.Activity"]
+  persisters_kinesis_writer -> kinesis -> persisters_kinesis_reader [label="o.a.s.p.j.ActivityObject"]
 
-  persisters_kinesis_reader_activity -> persisters_elasticsearch
-  persisters_kinesis_reader_activity -> persisters_hdfs
-  persisters_kinesis_reader_activity -> persisters_graph
-  persisters_kinesis_reader_activityobject -> persisters_elasticsearch
-  persisters_kinesis_reader_activityobject -> persisters_hdfs
+  persisters_kinesis_reader -> persisters_elasticsearch
+  persisters_kinesis_reader -> persisters_hdfs
 
-  persisters_elasticsearch -> elasticsearch
-  persisters_hdfs -> hdfs
-  persisters_graph -> neo4j
+  persisters_elasticsearch -> elasticsearch [label="es://"]
+  persisters_hdfs -> hdfs [label="hdfs://"]
 
 }

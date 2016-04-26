@@ -1,4 +1,5 @@
-##Overview
+## Source Repositories
+
 This project uses [Git](http://git.org/ "Git") for source control.
 
 Only project committers are permitted to push to git-wip-us.apache.org.

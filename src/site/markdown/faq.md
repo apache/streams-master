@@ -2,7 +2,13 @@
 
 ###    Why should I adopt activity streams for my project?
 
-Odds are the dataset you are working with is some combination of timestamped events and observations of entities and their relationships at various points in time.  Activity Streams provides a simple yet powerful standard format for these types of data, regardless of their origin, publisher, or specific details.  Activity Streams is a community-driven specification designed for interoperability and flexibility.  By supporting activity streams you maximize the chance that a new data-source of interest to you will be compatible with your existing data, and that your data will be compatible with that of other communities working on similar projects.
+Odds are the dataset you are working with is some combination of timestamped events and observations of entities and their relationships at various points in time.  Activity Streams provides a simple yet powerful standard format for these types of data, regardless of their origin, publisher, or specific details.  Activity Streams is a community-driven specification designed for interoperability and flexibility.  By supporting activity streams you maximize the chance that a new data-source of interest to you will be compatible with your existing data, and that your data will be compatible with that of other communities working on similar projects.  
+
+###    What organizations exchange data in activity streams formats?
+
+A short list of organizations and products that support activity streams format is compiled [who](who.html "here").
+
+If your organization supports activity streams, please let us know on the project mailing list.
 
 ###    Why should I consider using Apache Streams for my project?
 
@@ -25,11 +31,17 @@ Apache Streams is
 
 Apache Streams is not
 
-* highly prescriptive or opinionated
 * one-size-fits-all
+* prescriptive or opinionated about how it should be used
 * only useful for projects fully dedicated to activity streams datasets
 
-The primary Streams git repository incubator-streams (org.apache.streams:streams-project) contains a library of modules inputs, outputs, and reusable components for transforming and enriching data streams.  Similar modules can also be hosted externally - so long as they publish maven artifacts compatible with your version of streams, you can import and use them in your streams easily.
+The primary Streams git repository incubator-streams (org.apache.streams:streams-project) contains
+ 
+* core interfaces and utilities
+* plugins for transforming schemas into source code and other artifacts
+* a library of modules for acquiring, transforming, and enriching data streams.
+
+Similar modules can also be hosted externally - so long as they publish maven artifacts compatible with your version of streams, you can import and use them in your streams easily.
 
 The streams community also supports a separate repository incubator-streams-examples (org.apache.streams:streams-examples) which contains a library of simple streams that are 'ready-to-run'.  Look here to see what Streams user code look like.
 
@@ -41,19 +53,23 @@ Frameworks make important but boring parts of systems and code just work so your
 
 If you are sure you can write code that is some combination of faster, more readable, better tested, easier to learn, easier to build with, or more maintainable than any existing framework (including Streams), maybe you should.
 
-On the other hand, maybe you are under-estimating how difficult it will be to optimize across these factors and continuous improving those libraries.
+But you are probably under-estimating how difficult it will be to optimize across all of these considerations, stay current with upgrades to underlying libraries, and fix whatever bugs are discovered.
 
-Or maybe your time is just more valuable focused on your product rather than on plumbing.
+Or maybe you are capable of doing it all flawlessly, but your time is just more valuable focused on your product rather than on plumbing
 
-Or maybe by joining forces with others who have more than just a passing interest in running water, everyone can run better, faster, stronger code assembled with expertise including your own.
+By joining forces with others who care about clean running water, everyone can run better, faster, stronger code: assembled with more diverse expertise for and tested in use cases beyond your own.
 
 ###    How is streams different than "*processing framework*"?
 
-You don't have to look hard to find great data processing frameworks for batch or for real-time.  Storm, Spark, Samza, Flink, and Google Cloud Dataflow (soon-to-be Apache Beam) are mature and well-documented.  NiFi and Apex are interesting new options.  At the core these platforms help you specify inputs, outputs, and a directed graph of computation and then run your code at scale.
+You don't have to look hard to find great data processing frameworks for batch or for real-time.  Pig, Hive, Storm, Spark, Samza, Flink, and Google Cloud Dataflow (soon-to-be Apache Beam) are all great.  Apex and NiFi are interesting newer options.  And this list only Apache Foundation JVM projects!
 
-Streams supports a similar computational model, but is more focused on intelligently modeling the data that will flow through the stream than on stream execution.  In this sense Streams is an alternative to avro or protocol buffers which prioritizes flexibility, expressivity, interoperability, and tooling ahead of speed or compute efficiency.
+At the core these platforms help you specify inputs, outputs, and a directed graph of computation and then run your code at scale.
 
-Streams also seeks to make it easy to design and evolve streams, and to configure complex streams sensibly.  Where many processing frameworks leave all business logic and configuration issues to the developer, streams modules are designed to mix-and-match.  Streams modules expect to be embedded with other frameworks and are organized to make that process painless.
+Streams use this computational model as well, but is more focused on intelligently and correctly modeling the data that will flow through the stream than on stream execution.  In this sense Streams is an alternative to avro or protocol buffers - one which prioritizes flexibility, expressivity, interoperability, and tooling ahead of speed or compute efficiency.
+
+Streams seeks to make it easy to design and evolve streams, and to configure complex streams sensibly.  Where many processing frameworks leave all business logic and configuration issues to the developer, streams modules are designed to mix-and-match.  Streams modules expect to be embedded with other frameworks and are organized to make that process painless.
+
+Streams also contains a library of plug-and-play data providers to collect and normalize data from a variety of popular sources.
 
 ###    How do I deploy Streams?
 
@@ -67,8 +83,6 @@ Alternatively, components written to streams interfaces can be bound within othe
 
 Absolutely - and that will work great right up until the point where the requirements, the tools, or the way you want to index your data need to change.
 
-A better long-term approach is to archive each data series you observe, and label each piece of data by source, connector, connector version, and execution.  Once data is 'under management' in it's original form, normalize it into a format that fits your application with a set of core fields you don't ever expect to change.  Then add metadata piece by piece using code and APIs managed by you and/or third-parties.  Write these finished data points sequentially or simultaneouly to all of the places from which your applications will look them up.
-
 ###    What if I need data from "*specific API*"?
 
 No problem - anyone can write a Streams provider.  The project contains providers that use a variety of strategies to generate near-real-time data streams, including:
@@ -78,7 +92,7 @@ No problem - anyone can write a Streams provider.  The project contains provider
 * polling
 * scraping
 
-Providers can run continuously and pass-through new data, or they can work sequentially through a backlog of items.  If you need to collect so many items that you can't fit all of their ids in the memory available to your stream, a stream provider can read an arbitrarily long sequence of ids and hand those off to other providers for collection.
+Providers can run continuously and pass-through new data, or they can work sequentially through a backlog of items.  If you need to collect so many items that you can't fit all of their ids in the memory available to your stream, it's pretty simple to sub-divide your backlog into small batches and launch a series of providers for collection using frameworks such as Flink or Spark Streaming.
 
 ###    What if I want to keep data in "*unsupported database*"?
 
@@ -92,15 +106,25 @@ If you just want to use streams providers to collect and feed incoming data into
 
 ###    Can't I just use "*third-party SDK*" to do the same thing?
 
-For any specific data collection, processing, or storage function there are several if not tens of basic implementations on GitHub.  There may be language-specific libraries published by a vendor backing the technology in question.
+Describe any specific data collection, processing, or storage function and there are probably several if not tens of basic implementations on GitHub.  There may even be language-specific libraries published by a vendor with a commercial interest in a related technology.
 
-However, in general there are a set of tradeoffs involved relying on these package.  They often have transitive dependencies.  They may not use performant HTTP and JSON libraries.  The object representations and lifecycle mechanisms they provide may not be consistent with the rest of your code.  They may source configuration properties in a problematic or cumbersome fashion.  Their licenses may be restrictive or undocumented.
+However, in general there are a set of tradeoffs involved when relying on these packages.
 
-Streams goes to great lengths to regularize many of these issues so they are uniform across existing modules, and easy to reuse within new modules.  Where quality java libraries exist, their most useful parts may be included within a streams module, while parts of their classpath are excluded.
+* They often have transitive dependencies.
+* They may not use performant HTTP and JSON libraries.
+* The object representations and lifecycle mechanisms they provide may not be consistent with the rest of your code.
+* They may source configuration properties in a problematic or cumbersome fashion.
+* Their licenses may be restrictive or undocumented.
+
+Streams goes to great lengths to regularize many of these issues so that they are uniform across project modules, and easy to reuse within new and external modules.
+
+Where quality java libraries exist, their most useful parts may be included within a streams module, with unnecessary or difficult parts of their dependency tree excluded.
 
 ###    Where do I start?
 
-Navigate the list of 'Getting Started' recommendations in order to get up and running with streams.
+Work your way through the list of 'Tutorial' items above to get up and running with streams.
+
+Then browse the 'Getting Started' items to learn more about how streams works and why.
 
 ###    How can I help?
 

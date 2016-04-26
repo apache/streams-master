@@ -1,10 +1,22 @@
-###Release Process
+##Release Process
 
 There are two distinct sets of artifacts that are released on independent schedules:  streams-master & streams-project.  The streams-master is the project metadata and only needs to be released when there is a change in the structure of the project itself.  The streams-project artifacts are comprised of all streams source code, binaries and a standalone demo.  For release setup information, refer to [Release Setup Information](/release-setup.html).
 
-All of the steps below apply to both the master and project releases, unless otherwise specified.  As an alternative to releasing separately, the projects MAY be released together as one combined release.  The steps for this can be found below. ([Combined Release Steps](#combined))
+All of the steps below apply to all streams repository releases, unless otherwise specified.  As an alternative to releasing separately, the projects MAY be released together as one combined release.  The steps for this can be found below. ([Combined Release Steps](#combined))
 
-####Common Release Steps
+NOTE:
+
+Releases should always be built and published in the following order:
+
+* streams-master
+* streams-project
+* streams-examples
+
+In the instructions below, ${project.name} should be one of these top-level repository aggregator pom project names.
+
+As an alternative to releasing separately, the projects MAY be released together as one combined release. The steps for this can be found below. (Combined Release Steps)
+
+###Common Release Steps
 
 1. Environment setup for releasing artifacts (same for SNAPSHOTs and releases)    
 
@@ -28,8 +40,8 @@ All of the steps below apply to both the master and project releases, unless oth
 3. Create a release candidate branch from master.
    X should start at 1 and increment if early release candidates fail to complete the release cycle.
     
-    git checkout master
-    git branch {$project.version}-rcX
+        git checkout master
+        git branch ${project.name}-${project.version}-rcX
     
 4. Verify the source has the required license headers before trying to release:
 
@@ -39,16 +51,16 @@ All of the steps below apply to both the master and project releases, unless oth
 
         mvn -P apache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
 
-    The dry run will not commit any changes back to SCM and gives you the opportunity to verify that the release process will complete as expected. You will be prompted for the following information :
+    - The dry run will not commit any changes back to SCM and gives you the opportunity to verify that the release process will complete as expected. You will be prompted for the following information :
 
-      * Release version - take the default (should be ${project.version}-incubating)
-      * SCM release tag - *DO NOT TAKE THE DEFAULT*  - ${project.version}-rcX
-      * New development version - take the default (should be ${project.version}-incubating-SNAPSHOT)
-      * GPG Passphrase  
+        * Release version - take the default (should be ${project.version}-incubating)
+        * SCM release tag - *DO NOT TAKE THE DEFAULT*  - ${project.artifactId}-${project.version}-rcX
+        * New development version - take the default (should be ${project.version}-incubating-SNAPSHOT)
+        * GPG Passphrase  
 
-    *If you cancel a release:prepare before it updates the pom.xml versions, then use the release:clean goal to just remove the extra files that were created.*
+    - *If you cancel a release:prepare before it updates the pom.xml versions, then use the release:clean goal to just remove the extra files that were created.*
 
-    The Maven release plugin checks for SNAPSHOT dependencies in pom's. It will not complete the prepare goal until all SNAPSHOT dependencies are resolved.
+    - The Maven release plugin checks for SNAPSHOT dependencies in pom's. It will not complete the prepare goal until all SNAPSHOT dependencies are resolved.
 
 6. Verify that the release process completed as expected
     1. The release plugin will create pom.xml.tag files which contain the changes that would have been committed to SVN. The only differences between pom.xml.tag and it's corresponding pom.xml file should be the version number.
@@ -112,14 +124,14 @@ All of the steps below apply to both the master and project releases, unless oth
     
     3. Create an official release tag from the successful release candidate tag.
     
-            git checkout streams-project-${project.version}-rcX
-            git tag -a streams-project-${project.version} -m 'release tag streams-project-${project.version}'
+            git checkout ${project.name}-${project.version}-rcX
+            git tag -a ${project.name}-${project.version} -m 'release tag ${project.name}-${project.version}'
             git push origin :refs/tags/streams-project-${project.version}
     
     4. Update the staged website
-        *  Update the downloads page to add new version using the mirrored URLs
+        *  Update the downloads page (downloads.md) to add new version using the mirrored URLs
         *  Modify the URL for the prior release to the archived URL for the release
-    5.  Publish the website
+    5.  Publish the website (see [website](website.html "Website Management")
         *  WAIT 24hrs after committing releases for mirrors to replicate
         *  Publish updates to the download page
     6.  Delete the prior versions
@@ -129,7 +141,7 @@ All of the steps below apply to both the master and project releases, unless oth
 14. Update the JIRA versions page to close all issues, mark the version as "released", and set the date to the date that the release was approved. You may also need to make a new release entry for the next release.
 15. Announcing the release
        * Make a news announcement on the streams homepage.
-       * Make an announcement about the release on the users@streams.apache.org, dev@streams.apache.org, and announce@apache.org list as per the Apache Announcement Mailing Lists page)
+       * Make an announcement about the release on the dev@streams.incubator.apache.org, and announce@incubator.apache.org list as per the Apache Announcement Mailing Lists page)
 
 ####Recovering from a vetoed release
 
@@ -176,9 +188,9 @@ gpg: Signature made ...
 ####Combined Release
 In order to perform a combined release of the streams-master and streams-project trunks, do the following:    
 
-  *  Perform Steps 1-9 of the [release](#release-steps) for streams Master & streams Project  
+  *  Perform Steps 1-9 of the [release](#release-steps) for streams-master, streams-project, and streams-examples
       *  Do NOT perform step 10 until steps 1-9 have been completed for BOTH projects
       *  Build the streams-master FIRST
-      *  When prompted to change the streams-project dependency on streams-master SNAPSHOT, do so to the release that you just built
+      *  When prompted to change dependencies on SNAPSHOTs, do so to the corresponding releases that you just built
   *  Execute the remaining steps using the following e-mail templates  
       * [PMC Release Vote](PPMC_Combined.txt)  

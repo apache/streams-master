@@ -1,10 +1,10 @@
-### Website Information
+## Website Management
 
 http://streams.incubator.apache.org is a set of interconnected websites generated
 by the maven site plugin.  The front page, this page, and most pages linked in the
 top nav of the site are part of incubator-streams-master.
 
-#### Website Content
+### Website Content
 
 Pages, diagrams, and other hard-linkable resources are stored throughout the source tree.
 
@@ -34,7 +34,7 @@ they can be linked to across projects and in external projects.
 
 This allows users to import HOCON from modules outside their sphere of control and adapt to changes upstream.
 
-### Website Changes
+### Website Updates
 
 The project website(s) are hosted by the Apache foundation and updated via SVN.
 
@@ -108,7 +108,7 @@ Next, generate SVG resources for all DOT diagrams in the source tree
    
 Then, generate the site that will be published
      
-    mvn clean site:site site:stage
+    mvn clean install -Dmaven.test.skip.exec=true site:site site:stage
     
 At this point you can open target/staging/index.html and do a sanity check on the site you intend to publish.
 
