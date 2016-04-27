@@ -13,7 +13,7 @@ You'll need the following tools installed in your command line:
 
 #### Git
 
-  `git -version`
+    git -version
     
 | Possible result | Explanation |
 |-----------------|-------------|
@@ -25,7 +25,7 @@ You'll need the following tools installed in your command line:
 
 Run from your command line:
 
-  `mvn -version`
+    mvn -version
 
 | Possible result | Explanation |
 |-----------------|-------------|
@@ -41,7 +41,7 @@ Run from your command line:
 
 Run from your command line:
 
-  `docker version`
+    docker version
 
 | Possible result | Explanation |
 |-----------------|-------------|

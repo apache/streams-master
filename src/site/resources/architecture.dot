@@ -9,9 +9,10 @@ digraph g {
 
   subgraph cluster_upstream {
     label="Upstream Systems";
-    upstream_databases [label="Databases"]
+    upstream_databases [label="Databases", shape="cylinder"]
+    upstream_filesystems [label="Filesystems", shape="tab"]
     upstream_generators [label="Generators"]
-    upstream_queues [label="Queues"]
+    upstream_queues [label="Queues", shape="trapezium"]
   }
 
   subgraph cluster_streams {
@@ -24,17 +25,20 @@ digraph g {
 
   subgraph cluster_downstream {
     label="Downstream Systems";
-    downstream_databases [label="Databases"]
-    downstream_queues [label="Queues"]
+    downstream_databases [label="Databases", shape="cylinder"]
+    downstream_filesystems [label="Filesystems", shape="tab"]
+    downstream_queues [label="Queues", shape="trapezium"]
   }
 
   upstream_generators -> providers
-  upstream_queues -> persistReaders
   upstream_databases -> persistReaders
+  upstream_filesystems -> persistReaders
+  upstream_queues -> persistReaders
   providers,persistReaders -> processors
   processors -> processors
   processors -> persistWriters
-  persistWriters -> downstream_databases,downstream_queues
-
+  persistWriters -> downstream_databases
+  persistWriters -> downstream_filesystems
+  persistWriters -> downstream_queues
 
 }

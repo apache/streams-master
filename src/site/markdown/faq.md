@@ -6,7 +6,7 @@ Odds are the dataset you are working with is some combination of timestamped eve
 
 ###    What organizations exchange data in activity streams formats?
 
-A short list of organizations and products that support activity streams format is compiled [who](who.html "here").
+A short list of organizations and products that support activity streams format is compiled [here](who.html "here").
 
 If your organization supports activity streams, please let us know on the project mailing list.
 

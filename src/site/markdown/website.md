@@ -108,13 +108,15 @@ Next, generate SVG resources for all DOT diagrams in the source tree
    
 Then, generate the site that will be published
      
-    mvn clean install -Dmaven.test.skip.exec=true site:site site:stage
+    mvn clean generate-sources package -Dmaven.test.skip.exec=true site:site site:stage
     
 At this point you can open target/staging/index.html and do a sanity check on the site you intend to publish.
 
 Finally, publish the site.
 
     mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}
+
+You may need to provide -Dscmpublish.content= depending where the staging site directory winds up under target/
 
 Note the revision number checked in at the bottom of the maven logs.
 

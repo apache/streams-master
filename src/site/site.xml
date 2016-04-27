@@ -17,20 +17,13 @@
   ~ under the License.
   -->
 <project>
-    <publishDate position="right"/>
-    <version position="right"/>
+    <publishDate position="bottom"/>
+    <version position="bottom"/>
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
-        <version>1.4</version>
+        <version>1.5</version>
     </skin>
-    <custom>
-      <fluidoSkin>
-        <topBarEnabled>true</topBarEnabled>
-        <navBarStyle>navbar-inverse</navBarStyle>
-        <sideBarEnabled>false</sideBarEnabled>
-      </fluidoSkin>
-    </custom>
     <bannerLeft>
         <name>Apache Streams</name>
         <src>http://streams.incubator.apache.org/images/streams_logo.jpg</src>
@@ -48,8 +41,7 @@
           <item name="Incubator" href="http://incubator.apache.org/"/>
           <item name="Streams" href="http://streams.incubator.apache.org/"/>
         </breadcrumbs>
-        <menu ref="parent" inherit="top"/>
-        <menu name="Overview">
+        <menu name="Overview" inherit="top">
             <item name="Overview" href="index.html" />
             <item name="Architecture" href="architecture.html" />
             <item name="Concepts" href="concepts.html" />
@@ -70,7 +62,7 @@
           <item name="Release Process" href="release.html" />
           <item name="Website Management" href="website.html" />
         </menu>
-        <menu name="Projects">
+        <menu name="Projects" inherit="top">
           <item name="streams-master" />
           <item name="streams-project" href="http://streams.incubator.apache.org/site/latest/streams-project" />
           <item name="streams-examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/" />
@@ -81,26 +73,39 @@
             <item name="Set up a local docker environment" href="tutorial/docker.html" />
             <item name="Run a local database to store activity documents" href="tutorial/database.html" />
             <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/latest/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
-            <item name="Browse and search the twitter data you collected" href="tutorial/browse.html" />
+            <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/latest/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
         </menu>
-        <menu name="Getting Started">
-            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/index.html" />
-            <item name="View the schemas that describe twitter data" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/streams-provider-twitter/index.html" />
-            <item name="Read about twitter / streams conversion" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html" />
-            <item name="Learn about utility streams components" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-components/index.html"  />
-            <item name="Learn about streams interoperability modules" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
+        <menu name="Learn More">
             <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
+            <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/index.html" />
+            <item name="View java POJOs generated from the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/streams-pojo/apidocs/index.html" />
+            <item name="Check out some additional examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/index.html"  />
         </menu>
         <menu name="Other Resources">
-          <item name="ActivityStreams Homepage" href="http://activitystrea.ms" />
-          <item name="ActivityStreams Specifications" href="http://activitystrea.ms/specs/" />
-          <item name="Streams Blog" href="http://blogs.apache.org/streams/" />
-          <item name="Streams Proposal Wiki Page" href="http://wiki.apache.org/incubator/StreamsProposal" />
-        </menu>
-        <menu name="Foundation">
-            <item name="Foundation Info" href="http://www.apache.org/" />
+            <item name="ActivityStreams Homepage" href="http://activitystrea.ms" />
+            <item name="ActivityStreams Specifications" href="http://activitystrea.ms/specs/" />
+            <item name="Streams Blog" href="http://blogs.apache.org/streams/" />
+            <item name="Streams Proposal Wiki Page" href="http://wiki.apache.org/incubator/StreamsProposal" />
+            <item name="Apache Foundation Info" href="http://www.apache.org/" />
             <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html" />
             <item name="Thanks" href="http://www.apache.org/foundation/thanks.html" />
         </menu>
     </body>
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <navBarStyle>navbar-inverse</navBarStyle>
+            <sideBarEnabled>false</sideBarEnabled>
+            <gitHub>
+                <projectId>apache/incubator-streams-master</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>black</ribbonColor>
+            </gitHub>
+            <twitter>
+                <user>ApacheStreams</user>
+                <showUser>true</showUser>
+                <showFollowers>true</showFollowers>
+            </twitter>
+        </fluidoSkin>
+    </custom>
 </project>

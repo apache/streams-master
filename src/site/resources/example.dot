@@ -43,7 +43,7 @@ digraph g {
 
   subgraph cluster_queues {
     label="queues";
-    kinesis [label="kinesis://" shape="box"]
+    kinesis [label="kinesis://", shape="trapezium"]
   }
   subgraph cluster_persisters_2 {
     label="persisters";
@@ -55,8 +55,8 @@ digraph g {
 
   subgraph cluster_dbs {
     label="dbs";
-    elasticsearch [label="elasticsearch"]
-    hdfs [label="hdfs"]
+    elasticsearch [label="elasticsearch", shape="cylinder"]
+    hdfs [label="hdfs", shape="tab"]
   }
 
   generators_youtube -> providers_youtube_channel

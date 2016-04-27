@@ -20,15 +20,14 @@ Elasticsearch is a great database for storing content from your streams.
   
 ### Add Elasticsearch container details to your configuration 
 
-    cd $STREAMS
-    export DOCKERHOST=$(docker-machine ip)
+    echo $(docker-machine ip)
   
-Put the following into elasticsearch.conf
+Put the following into elasticsearch.conf (in the same directory as reference.conf)
 
     include "reference.conf"
     elasticsearch {
         hosts = [
-          ${DOCKERHOST}
+          # paste the response from echo $(docker-machine ip) on this line
         ]
         protocol = "tcp"
         port = 9300
