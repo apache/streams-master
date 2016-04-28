@@ -283,7 +283,7 @@
         <resources.plugin.version>2.7</resources.plugin.version>
         <scm.plugin.version>1.9.4</scm.plugin.version>
         <shade.plugin.version>2.4.3</shade.plugin.version>
-        <site.plugin.version>3.4</site.plugin.version>
+        <site.plugin.version>3.5</site.plugin.version>
         <source.plugin.version>2.4</source.plugin.version>
         <surefire.plugin.version>2.17</surefire.plugin.version>
         <wagon.plugin.version>2.5</wagon.plugin.version>
@@ -323,6 +323,7 @@
         <powermock.version>1.5.6</powermock.version>
         <httpcomponents.core.version>4.3.3</httpcomponents.core.version>
         <httpcomponents.client.version>4.3.5</httpcomponents.client.version>
+        <doxia.version>1.7</doxia.version>
 
         <!-- osgi configuration -->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
@@ -545,7 +546,17 @@
                         <dependency>
                             <groupId>org.apache.maven.doxia</groupId>
                             <artifactId>doxia-module-markdown</artifactId>
-                            <version>1.6</version>
+                            <version>${doxia.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.maven.doxia</groupId>
+                            <artifactId>doxia-core</artifactId>
+                            <version>${doxia.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.maven.doxia</groupId>
+                            <artifactId>doxia-module-xhtml</artifactId>
+                            <version>${doxia.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>org.apache.maven.wagon</groupId>
