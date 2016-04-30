@@ -55,15 +55,15 @@ If you are sure you can write code that is some combination of faster, more read
 
 But you are probably under-estimating how difficult it will be to optimize across all of these considerations, stay current with upgrades to underlying libraries, and fix whatever bugs are discovered.
 
-Or maybe you are capable of doing it all flawlessly, but your time is just more valuable focused on your product rather than on plumbing
+Or maybe you are capable of doing it all flawlessly, but your time is just more valuable focused on your product rather than on plumbing.
 
-By joining forces with others who care about clean running water, everyone can run better, faster, stronger code: assembled with more diverse expertise for and tested in use cases beyond your own.
+By joining forces with others who care about clean running water, everyone can run better, faster, stronger code assembled with more diverse expertise, tested and tuned under more use cases.
 
 ###    How is streams different than "*processing framework*"?
 
-You don't have to look hard to find great data processing frameworks for batch or for real-time.  Pig, Hive, Storm, Spark, Samza, Flink, and Google Cloud Dataflow (soon-to-be Apache Beam) are all great.  Apex and NiFi are interesting newer options.  And this list only Apache Foundation JVM projects!
+You don't have to look hard to find great data processing frameworks for batch or for real-time.  Pig, Hive, Storm, Spark, Samza, Flink, and Google Cloud Dataflow (soon-to-be Apache Beam) are all great.  Apex and NiFi are interesting newer options.  This list only includes Apache Foundation JVM projects!
 
-At the core these platforms help you specify inputs, outputs, and a directed graph of computation and then run your code at scale.
+At the core these platforms help you connect inputs and  outputs to a directed graph of computation, and run your code at scale.
 
 Streams use this computational model as well, but is more focused on intelligently and correctly modeling the data that will flow through the stream than on stream execution.  In this sense Streams is an alternative to avro or protocol buffers - one which prioritizes flexibility, expressivity, interoperability, and tooling ahead of speed or compute efficiency.
 
@@ -122,10 +122,15 @@ Where quality java libraries exist, their most useful parts may be included with
 
 ###    Where do I start?
 
-Work your way through the list of 'Tutorial' items above to get up and running with streams.
+Work your way through the 'Tutorial' menu to get up and running with streams.
 
-Then browse the 'Getting Started' items to learn more about how streams works and why.
+Then browse the 'Other Resources' menu to learn more about how streams works and why.
 
 ###    How can I help?
 
-Please join our mailing list, then ask questions and suggest features.  Contribute to the documentation in one of the streams repositories.  Consider writing a new provider using an existing provider as a template.  Consider adding a feature (and / or tests) to an existing module you intend to use.  Consider building and contributing a new example.  
+* Join our mailing list.
+* Ask questions and suggest features.
+* Contribute to the documentation in one of the streams repositories.
+* Write a new provider using an existing provider as a template.
+* Add new features (and / or tests) to an existing module you intend to use.
+* Build and contributing a new example.

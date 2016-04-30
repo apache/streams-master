@@ -77,7 +77,7 @@
             <item name="Website Management" href="website.html" />
         </menu>
         <menu name="Projects" inherit="top">
-            <item name="streams-master" />
+            <item name="streams-master" href="http://streams.incubator.apache.org/site/latest/streams-master" />
             <item name="streams-project" href="http://streams.incubator.apache.org/site/latest/streams-project" />
             <item name="streams-examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/" />
         </menu>
@@ -91,7 +91,7 @@
         <menu name="Learn More">
             <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
             <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/index.html" />
-            <item name="View java POJOs generated from the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/streams-pojo/apidocs/index.html" />
+            <item name="View java POJOs generated from the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/apidocs/org/apache/streams/pojo/json/package-summary.html" />
             <item name="Check out some additional examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/index.html"  />
         </menu>
         <menu name="Other Resources">

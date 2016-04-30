@@ -2,7 +2,9 @@
 
 http://streams.incubator.apache.org is a set of interconnected websites generated
 by the maven site plugin.  The front page, this page, and most pages linked in the
-top nav of the site are part of incubator-streams-master.
+top nav of the site are part of incubator-streams-master.  incubator-streams and 
+incubator-streams-examples also contain documentation of specific modules and examples that
+are part of the project webpage.
 
 ### Website Content
 
@@ -38,11 +40,11 @@ This allows users to import HOCON from modules outside their sphere of control a
 
 The project website(s) are hosted by the Apache foundation and updated via SVN.
 
-Currently pushing website changes is a manual process performed by whomever is making the change.
+Currently pushing website changes is a manual process with several steps, performed by whomever is making the change.
 
 This typically requires checking out the current website from SVN.
 
-    svn co https://svn.apache.org/repos/infra/websites/production/streams/content
+    svn co https://svn.apache.org/repos/asf/incubator/streams/site/trunk/content
     cd content
 
 NOTE:
@@ -83,7 +85,15 @@ If you are published over an existing snapshot, you must first remove the existi
 
 The folder must exist and be empty for the publish steps to succeed.
 
-#### Generating and publishing a new website version
+If you are publishing a release, it's appropriate to delete the site snapshots related to the prior releases.
+
+For example when 0.3-incubating is published, 0.2-incubating-SNAPSHOT should be deleted.
+
+This policy of removing old snapshots keeps external projects from linking to snapshot artifacts indefinitely.
+
+Release artifacts should be retained indefinitely.
+
+#### Generating and committing a new website version
  
 The instructions below presume:
 
@@ -114,57 +124,67 @@ At this point you can open target/staging/index.html and do a sanity check on th
 
 Finally, publish the site.
 
-    mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}
+    mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/asf/incubator/streams/site/trunk/content/site/${project.version}/${project.artifactId}
 
 You may need to provide -Dscmpublish.content= depending where the staging site directory winds up under target/
 
 Note the revision number checked in at the bottom of the maven logs.
 
-You should now be able to access the published site(s) via an absolute URL such as http://streams.incubator.apache.org/site/${project.version}/${project.artifactId}
+#### Updating the staging site
+
+Next step is to update the staging site and check it out.
+
+Log into https://cms.apache.org with your apache credentials.
+
+Use https://cms.apache.org/streams to access the streams website.
+
+Typically you can use Get streams Working Copy, although you might need to Force if you run into conflicts in SVN.
+
+You'll probably need to 'Update this directory' if you want to inspect the changes you committed above.
+
+'View Staging Builds' should show a build around the time of the previous commit.  This means the change has been staged.
+ 
+You should now be able to access and review the published site(s) via the staging URL:
+
+* http://streams.staging.apache.org/
     
-For example, website documentation from a recent release:
+At this point use explicit versions to access and review the new documentation, i.e.
 
-* http://streams.incubator.apache.org/site/0.2-incubating/streams-project/index.html
+* http://streams.staging.apache.org/site/0.3-incubating-SNAPSHOT/streams-master/index.html
+* http://streams.staging.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/index.html
+* http://streams.staging.apache.org/site/0.3-incubating-SNAPSHOT/streams-examples/index.html
 
-Some recent snapshots:
+#### Managing version pointers
 
-* http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-master/index.html
-* http://streams.incubator.apache.org/site/0.3-incubating-SNAPSHOT/streams-project/index.html
-* http://streams.incubator.apache.org/site/0.2-incubating-SNAPSHOT/streams-examples/index.html
+When new versions of these sites are built for the first time, an additional set to alter Apache rules may be appropriate.
+
+The convention we use exposes the latest specific site version(s) using redirects maintained in the .htaccess file of project website SVN.
+
+These rules are located in the '.htaccess' file in the root of the SVN content directory and looks something like this:
+
+    Options +FollowSymLinks
+    RewriteEngine on
+    RedirectMatch   "^/$"  "/site/0.3-incubating-SNAPSHOT/streams-master"
+    Redirect /site/latest /site/0.3-incubating-SNAPSHOT
+    Redirect /site/latest/streams-master /site/0.3-incubating-SNAPSHOT/streams-master
+    Redirect /site/latest/streams-project /site/0.3-incubating-SNAPSHOT/streams-project
+    Redirect /site/latest/streams-examples /site/0.3-incubating-SNAPSHOT/streams-examples
+
+Adjust the Redirect rules as appropriate for the project and version you are deploying.  You can do this directly from the CMS.
+
+Commit your changes, wait a few seconds, click Follow Staging Build, and you should see a new build with a 'Build Successful' message.
+
+You should now be able to use 'latest' as an alias for the docs you are deploying, i.e.
+
+* http://streams.staging.apache.org/site/latest/streams-master/index.html
+* http://streams.staging.apache.org/site/latest/streams-project/index.html
+* http://streams.staging.apache.org/site/latest/streams-examples/index.html
 
 #### Promoting a new website version 
 
-New release or snapshots are immediately published, but visitors to the website won't arrive there from standard links and navigation
-until it has been fully promoted.
- 
-The instructions below presume:
+All that's left at this point is to promote from staging to production.
 
-* you have a shell open in the SVN content directory
-* you know the artifactId and version of the repository you want to publish.
+If a release is happening, this should happen just prior to the release announcement.
 
-The convention in place exposes the latest specific site version(s) using redirects maintained in the .htaccess file of project website SVN.
-
-This file can be edited from https://cms.apache.org/streams/
-
-First, click 'Get streams Working Copy'
-
-Next, open .htaccess
-
-If you are promoting sites from all streams repositories simultaneously, the file should end with:
-
-    Redirect /site/latest/ /site/${project.version}
-    
-If you want to expose sites hosted under different versions across streams repositories:
-
-    Redirect /site/latest/streams-master /site/0.3-incubating-SNAPSHOT/streams-master
-    Redirect /site/latest/streams-project /site/0.2-incubating/streams-project
-    Redirect /site/latest/streams-examples /site/0.3-incubating-SNAPSHOT/streams-examples
-
-Commit your changes.
-
-Wait a few seconds and click Follow Staging Build.
-
-You should see a new build with a 'Build Successful' message.
-
-Open a new tab and visit http://streams.staging.apache.org for one last check before go-live.
-
+If you are just updating content associated with a snapshot, use good judgement to determine whether the list should have a chance to review
+and/or vote on the changes in staging prior to promotion.
