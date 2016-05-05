@@ -68,13 +68,6 @@
     </prerequisites>
 
     <mailingLists>
-      <!-- <mailingList>
-          <name>User Mailing List</name>
-          <post>user@streams.incubator.apache.org</post>
-          <subscribe>user-subscribe@streams.incubator.apache.org</subscribe>
-          <unsubscribe>user-unsubscribe@streams.incubator.apache.org</unsubscribe>
-          <archive>http://mail-archives.apache.org/mod_mbox/incubator-streams-user/</archive>
-      </mailingList> -->
       <mailingList>
             <name>Dev Mailing List</name>
             <post>dev@streams.incubator.apache.org</post>
@@ -237,12 +230,8 @@
         </snapshotRepository>
         <site>
             <id>site.streams.master</id>
-            <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/streams/content/site/${project.version}/${project.artifactId}/</url>
+            <url>scm:svn:https://svn.apache.org/repos/asf/incubator/streams/site/trunk/content/site/${project.version}/${project.artifactId}/</url>
         </site>
-        <!-- <site>
-            <id>site.streams.sblackmon.home</id>
-            <url>scp://people.apache.org/home/sblackmon/public_html/${project.version}/${project.artifactId}/</url>
-        </site> -->
     </distributionManagement>
 
     <properties>
@@ -317,7 +306,6 @@
         <zookeeper.version>3.4.5</zookeeper.version>
         <netty.version>3.8.0.Final</netty.version>
         <json-path.version>0.9.1</json-path.version>
-        <build-helper.version>1.8</build-helper.version>
         <facebook4j.version>2.1.0</facebook4j.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.5.6</powermock.version>
@@ -399,6 +387,9 @@
                     <artifactId>jsonschema2pojo-maven-plugin</artifactId>
                     <version>${jsonschema2pojo.version}</version>
                     <configuration>
+                        <sourcePaths>
+                            <sourcePath>${project.basedir}/src/main/jsonschema</sourcePath>
+                        </sourcePaths>
                         <addCompileSourceRoot>true</addCompileSourceRoot>
                         <generateBuilders>true</generateBuilders>
                         <outputDirectory>target/generated-sources/jsonschema2pojo</outputDirectory>
@@ -931,6 +922,7 @@
                 </reportSets>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${site.plugin.version}</version>
                 <configuration>
@@ -1097,11 +1089,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!--<plugin>-->
-                        <!--<groupId>com.github.ferstl</groupId>-->
-                        <!--<artifactId>depgraph-maven-plugin</artifactId>-->
-                        <!--<version>${depgraph.plugin.version}</version>-->
-                    <!--</plugin>-->
                 </plugins>
             </build>
             <reporting>
@@ -1133,6 +1120,7 @@
                         </reportSets>
                     </plugin>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
                     </plugin>
                     <plugin>
