@@ -2,7 +2,7 @@
 
 http://streams.incubator.apache.org is a set of interconnected websites generated
 by the maven site plugin.  The front page, this page, and most pages linked in the
-top nav of the site are part of incubator-streams-master.  incubator-streams and 
+top nav of the site are part of incubator-streams-master.  incubator-streams and
 incubator-streams-examples also contain documentation of specific modules and examples that
 are part of the project webpage.
 
@@ -21,7 +21,7 @@ Most HTML pages are generated from markdown.  The maven-site-plugin does this du
 * src/main/jsonschema
 * src/main/xmlschema
 
-JSON and XML Schemas through-out the project are copied to the web page of their respective modules so they can be 
+JSON and XML Schemas through-out the project are copied to the web page of their respective modules so they can be
 linked to in other projects.
 
 This allows users to extend the canonical streams schemas incrementally and/or re-use specific fields as they see fit.
@@ -31,7 +31,7 @@ This allows users to extend the canonical streams schemas incrementally and/or r
 * src/main/resources
 * src/test/resources
 
-Other resources including .conf and .properties files are copied to the web page of their respective modules so 
+Other resources including .conf and .properties files are copied to the web page of their respective modules so
 they can be linked to across projects and in external projects.
 
 This allows users to import HOCON from modules outside their sphere of control and adapt to changes upstream.
@@ -67,7 +67,7 @@ If this is a brand new snapshot or release version, you first need to create a d
     mkdir site/${project.version}
     svn add site/${project.version}
     svn commit -m "svn add site/${project.version}"
-    
+
 The first time a specific site is being published for this version, you must create the directory where it will be published.
 
     mkdir site/${project.version}/${project.artifactId}
@@ -94,7 +94,7 @@ This policy of removing old snapshots keeps external projects from linking to sn
 Release artifacts should be retained indefinitely.
 
 #### Generating and committing a new website version
- 
+
 The instructions below presume:
 
 * you have a shell open in the root of a project repository
@@ -115,11 +115,11 @@ First, ensure that you have local credentials capable of publishing the site.
 Next, generate SVG resources for all DOT diagrams in the source tree
 
     for dot in $(find . -name *.dot); do dot -Tsvg $dot -o $dot.svg; done
-   
+
 Then, generate the site that will be published
-     
+
     mvn clean generate-sources package -Dmaven.test.skip.exec=true site:site site:stage
-    
+
 At this point you can open target/staging/index.html and do a sanity check on the site you intend to publish.
 
 Finally, publish the site.
@@ -143,11 +143,11 @@ Typically you can use Get streams Working Copy, although you might need to Force
 You'll probably need to 'Update this directory' if you want to inspect the changes you committed above.
 
 'View Staging Builds' should show a build around the time of the previous commit.  This means the change has been staged.
- 
+
 You should now be able to access and review the published site(s) via the staging URL:
 
 * http://streams.staging.apache.org/
-    
+
 At this point use explicit versions to access and review the new documentation, i.e.
 
 * http://streams.staging.apache.org/site/0.3-incubating-SNAPSHOT/streams-master/index.html
@@ -180,7 +180,7 @@ You should now be able to use 'latest' as an alias for the docs you are deployin
 * http://streams.staging.apache.org/site/latest/streams-project/index.html
 * http://streams.staging.apache.org/site/latest/streams-examples/index.html
 
-#### Promoting a new website version 
+#### Promoting a new website version
 
 All that's left at this point is to promote from staging to production.
 
@@ -188,3 +188,5 @@ If a release is happening, this should happen just prior to the release announce
 
 If you are just updating content associated with a snapshot, use good judgement to determine whether the list should have a chance to review
 and/or vote on the changes in staging prior to promotion.
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

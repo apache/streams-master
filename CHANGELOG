@@ -1,7 +1,7 @@
 Apache Streams (Incubating)
 +++++++++++++++++++++++++++++++
 
-Apache Streams is be a lightweight server for ActivityStreams (activitystrea.ms). The role of Apache Streams is to provide a central point of aggregation, filtering and querying for Activities that have been submitted by disparate systems. Apache Streams also intends to include a mechanism for intelligent filtering and recommendation to reduce the noise to end users.
+Apache Streams is a lightweight server for ActivityStreams (activitystrea.ms). The role of Apache Streams is to provide a central point of aggregation, filtering and querying for Activities that have been submitted by disparate systems. Apache Streams also intends to include a mechanism for intelligent filtering and recommendation to reduce the noise to end users.
 
 
 Apache Streams will bring together individuals who are or are looking to increase and centralize the production, consumption and federation of ActivityStreams throughout enterprise organizations and the Internet as a whole. The target features include:
@@ -30,3 +30,11 @@ RELEASE 0.1: Streams Master POM
 +++++++++++++++++++++++++++++++++
 
 Initial release of project master POM that defines global meta-data and build processes for sub-modules and Streams project.
+
++++++++++++++++++++++++++++++++++
+
+RELEASE 0.3: Streams Master POM
+
++++++++++++++++++++++++++++++++++
+
+Consolidate dependency and plugin management into streams-master

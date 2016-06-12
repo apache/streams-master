@@ -9,7 +9,7 @@ We'll assume you've got docker up and running.
 Run from your command line:
 
     docker ps
-  
+
 If you see a (possibly empty) list of running containers, you are good.
 
 ### Run Elasticsearch
@@ -17,11 +17,11 @@ If you see a (possibly empty) list of running containers, you are good.
 Elasticsearch is a great database for storing content from your streams.
 
     docker run -d --name elasticsearch elasticsearch
-  
-### Add Elasticsearch container details to your configuration 
+
+### Add Elasticsearch container details to your configuration
 
     echo $(docker-machine ip)
-  
+
 Put the following into elasticsearch.conf (in the same directory as reference.conf)
 
     include "reference.conf"
@@ -41,3 +41,4 @@ Put the following into elasticsearch.conf (in the same directory as reference.co
         ]
     }  
 
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

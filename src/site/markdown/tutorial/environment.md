@@ -8,10 +8,10 @@ Create a new empty folder there and export the path to a variables.
     export STREAMS=$(cd ~streams; pwd)
 
 Next, create a configuration file to hold secrets for your streams to use.
-  
+
     cd $STREAMS
     touch reference.conf
-  
+
 To get started, put the following into reference.conf
 
     twitter {
@@ -31,4 +31,4 @@ The accessToken and accessTokenSecret are per-user.  They can be obtained by nav
 
     https://api.twitter.com/oauth/authenticate?oauth_token=UIJ0AUxCJatpKDUyFt0OTSEP4asZgqxRwUCT0AMSwc&oauth_callback=http%3A%2F%2Foauth.streamstutorial.w2odata.com%3A8080%2Fsocialauthdemo%2FsocialAuthSuccessAction.do
 
-
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

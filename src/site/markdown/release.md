@@ -23,7 +23,7 @@ As an alternative to releasing separately, the projects MAY be released together
     1. Increase the default Java heap available to Maven (required for Java SE 6)   
 
             export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
-    
+
     2. Use the latest Sun 1.7.0 JDK
     3. Use Maven 3.2.1 or later
     4. Make sure the [Release Setup](release-setup.html) steps have been performed.
@@ -39,14 +39,14 @@ As an alternative to releasing separately, the projects MAY be released together
 
 3. Create a release candidate branch from master.
    X should start at 1 and increment if early release candidates fail to complete the release cycle.
-    
+
         git checkout master
         git branch ${project.name}-${project.version}-rcX
-    
+
 4. Verify the source has the required license headers before trying to release:
 
         mvn -P apache-release clean rat:check -e -DskipTests
-    
+
 5. Do a dry run of the release:prepare step:  
 
         mvn -P apache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
@@ -70,22 +70,22 @@ As an alternative to releasing separately, the projects MAY be released together
 7. Cleanup the release prepare files again:  
 
         mvn -P apache-release release:clean
-    
+
 8. Prepare the release
     1. Run the "release:prepare" step for real this time. You'll be prompted for the same version information.
-    
+
             mvn -P apache-release -U clean release:prepare -DautoVersionSubmodules=true
-    
+
     2. Backup (zip or tar) your local release candidate directory in case you need to rollback the release after the next step is performed.
 9. Perform the release
     * This step will create a maven staging repository and site for use in testing and voting.
-    
+
             mvn -Papache-release -Darguments='-Dmaven.test.skip.exec=true' release:perform -Dgoals=deploy -DlocalRepoDirectory=. -DlocalCheckout=true
-    
+
     * If your local OS userid doesn't match your Apache userid, then you'll have to also override the value provided by the OS to Maven for the site-deploy step to work. This is known to work for Linux, but not for Mac and unknown for Windows.*
 
             -Duser.name=[your_apache_uid]
-    
+
 10. Verify the Nexus release artifacts
     1. Verify the staged artifacts in the nexus repo     
         * https://repository.apache.org/index.html
@@ -96,7 +96,7 @@ As an alternative to releasing separately, the projects MAY be released together
         * Staging repositories (under Build Promotion) --> Name column --> org.apache.streams
         * Click checkbox for the open staging repo (org.apache.streams-XXX) and press Close in the menu bar.
 11. Put the release candidate up for a vote
-     1. Create a VOTE email thread on dev@ to record votes as replies
+     1. Create a VOTE email thread on dev@ to record votes as replies using the template below.
      2. Create a DISCUSS email thread on dev@ for any vote questions
      3. Perform a review of the release and cast your vote. See the following for more details on Apache releases
            [http://www.apache.org/dev/release.html](http://www.apache.org/dev/release.html)  
@@ -105,6 +105,38 @@ As an alternative to releasing separately, the projects MAY be released together
          * reply to the initial email and prepend to the original subject "[RESULT]"
          * Include a list of everyone who voted +1, 0 or -1.
      6. If there are fewer than 3 +1 (binding) votes from IPMC members, submit a vote to general@incubator.apache.org requesting additional IPMC member votes.
+
+            I've created a ${project.name} ${project.version} release candidate, with the following artifacts up for a vote:
+
+            Git tag ${project.name}-${project.version}-${release.revision} (commit xxxxxxxx)
+            https://git-wip-us.apache.org/repos/asf?p=${project.name}.git;a=commit;h=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+            Maven staging repo:
+            https://repository.apache.org/content/repositories/${release.repository}
+
+            The source zip, including signatures, digests, etc. can be found at:
+            http://repository.apache.org/content/repositories/${release.repository}/org/apache/streams/${project.name}/${project.version}
+
+            Source release:
+            http://repository.apache.org/content/repositories/${release.repository}/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-incubating-source-release.zip
+
+            Checksums of ${project.name}-${project.version}-incubating-source-release.zip:
+            MD5: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            SHA1: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+            Release artifacts are signed with the following key:
+            https://people.apache.org/keys/committer/xxxxxxxxx.asc
+
+            (miscellaneous notes)
+
+            Please take the time to verify the artifacts before casting your vote.
+
+            Vote will be open for 72 hours.
+
+            [ ] +1  approve
+            [ ] +0  no opinion
+            [ ] -1  disapprove (and reason why)
+
 12. Finalizing a release
     1. Promote the staged nexus artifacts  
         * https://repository.apache.org/index.html
@@ -121,13 +153,13 @@ As an alternative to releasing separately, the projects MAY be released together
             wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.md5   
             svn add ${project.name}-*
             svn commit -m "Committing Source Release for ${project.name}-${project.version}
-    
+
     3. Create an official release tag from the successful release candidate tag.
-    
+
             git checkout ${project.name}-${project.version}-rcX
             git tag -a ${project.name}-${project.version} -m 'release tag ${project.name}-${project.version}'
             git push origin :refs/tags/streams-project-${project.version}
-    
+
     4. Update the staged website
         *  Update the downloads page (downloads.md) to add new version using the mirrored URLs
         *  Modify the URL for the prior release to the archived URL for the release
@@ -193,4 +225,37 @@ In order to perform a combined release of the streams-master and streams-project
       *  Build the streams-master FIRST
       *  When prompted to change dependencies on SNAPSHOTs, do so to the corresponding releases that you just built
   *  Execute the remaining steps using the following e-mail templates  
-      * [PMC Release Vote](PPMC_Combined.txt)  
+
+    to: streams-dev@incubator.apache.org
+    subject: [VOTE] Apache Streams ${release.version} Release Candidate
+
+    I've created a combined ${release.version} release candidate, with the
+    following artifacts up for a vote:
+
+    GIT source tags:
+    https://git.apache.org/repos/${release.master.repository}/tags/${release.master.repository}-${release.version}-rc${release.revision}/
+    https://git.apache.org/repos/${release.project.repository}/tags/${release.project.repository}-${release.version}-rc${release.revision}/
+    https://git.apache.org/repos/${release.examples.repository}/tags/${release.examples.repository}-${release.version}-rc${release.revision}/
+
+    Maven staging repo:
+    https://repository.apache.org/content/repositories/${release.master.repository}/
+    https://repository.apache.org/content/repositories/${release.project.repository}/
+    https://repository.apache.org/content/repositories/${release.examples.repository}/
+
+    Source releases:
+    https://repository.apache.org/content/repositories/${release.master.repository}/org/apache/streams/streams-master/${release.version}/streams-master-${release.version}-source-release.zip
+    https://repository.apache.org/content/repositories/${release.project.repository}/org/apache/streams/streams-project/${release.version}/streams-project-${release.version}-source-release.zip
+    https://repository.apache.org/content/repositories/${release.examples.repository}/org/apache/streams/streams-examples/${release.version}/streams-examples-${release.version}-source-release.zip
+
+    PGP release keys:
+    https://svn.apache.org/repos/asf/streams/KEYS
+
+    Please take the time to verify the artifacts before casting your vote.
+
+    Vote will be open for 72 hours.
+
+    [ ] +1  approve
+    [ ] +0  no opinion
+    [ ] -1  disapprove (and reason why)
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

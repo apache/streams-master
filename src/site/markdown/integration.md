@@ -13,3 +13,5 @@ This project uses [Jenkins](http://jenkins-ci.org/ "Jenkins") for continuous int
 ###streams-examples
 
 [streams-examples](http://streams.incubator.apache.org/site/0.2-incubating/streams-examples "streams-examples") builds run at [builds.apache.com/job/Streams Examples](https://builds.apache.org/job/Streams%20Examples/ "builds.apache.com/job/Streams%20Examples")
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

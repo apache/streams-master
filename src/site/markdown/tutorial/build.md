@@ -7,14 +7,14 @@ This tutorial assumes you are using linux or Mac OS X.
 You'll need the following tools installed in your command line:
 
 * Git
-* Java SDK 
+* Java SDK
 * Maven
 * Docker
 
 #### Git
 
     git -version
-    
+
 | Possible result | Explanation |
 |-----------------|-------------|
 | bash: git: No such file or directory | You need to install git |
@@ -58,7 +58,7 @@ Run from your command line:
 
     git clone https://github.com/apache/incubator-streams
     git clone https://github.com/apache/incubator-streams-examples
-  
+
 ### Build Projects
 
 Run from your command line:
@@ -66,16 +66,18 @@ Run from your command line:
     export MAVEN_OPTS="-Xmx2G"
     cd incubator-streams
     mvn clean install -Dmaven.test.skip.exec=true
-  
+
 | Possible result | Explanation |
 |-----------------|-------------|
 | BUILD SUCCESSFUL | You are all good |
 | BUILD FAILED | Check yourself |
-  
+
     cd ../incubator-streams-examples
     mvn clean package
-  
+
 | Possible result | Explanation |
 |-----------------|-------------|
 | BUILD SUCCESSFUL | You are all good |
 | BUILD FAILED | Check yourself |
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

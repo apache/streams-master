@@ -72,3 +72,5 @@ Developers using Linux workstations can skip over the references to Cygwin. If u
 ####Configure Maven
 
 1. Update your ~/.m2/settings.xml with the properties from [Publishing Maven Artifacts](http://www.apache.org/dev/publishing-maven-artifacts.html#dev-env)
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

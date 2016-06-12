@@ -8,3 +8,5 @@
 | Twitter (Gnip) | [Activity Streams Intro](http://support.gnip.com/articles/activity-streams-intro.html "Activity Streams Intro") |
 
 If your organization supports activity streams, please let us know on the project mailing list.
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0
