@@ -1059,6 +1059,7 @@
                                 <exclude>**/src/main/resources/**</exclude>
                                 <exclude>**/src/test/resources/**</exclude>
                                 <exclude>**/.gitignore</exclude>
+                                <exclude>**/*.md</exclude>
                                 <exclude>**/*.properties</exclude>
                                 <exclude>**/*.iml</exclude>
                                 <exclude>**/*.ini</exclude>
