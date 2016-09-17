@@ -192,5 +192,44 @@ In order to perform a combined release of the streams-master and streams-project
       *  Do NOT perform step 10 until steps 1-9 have been completed for BOTH projects
       *  Build the streams-master FIRST
       *  When prompted to change dependencies on SNAPSHOTs, do so to the corresponding releases that you just built
-  *  Execute the remaining steps using the following e-mail templates  
-      * [PMC Release Vote](PPMC_Combined.txt)  
+  *  Execute the remaining steps using the following e-mail template
+
+          to: streams-dev@incubator.apache.org
+          subject: [VOTE] Apache Streams ${release.version} Release Candidate
+
+          I've created a combined ${release.version} release candidate, with the
+          following artifacts up for a vote:
+
+          incubator-streams-master source tag (r${release.version}):
+          https://git-wip-us.apache.org/repos/asf?p=incubator-streams-master.git;a=commit;h=...
+
+          incubator-streams source tag (r${release.version}):
+          https://git-wip-us.apache.org/repos/asf?p=incubator-streams.git;a=commit;h=...
+
+          incubator-streams-examples source tag (r${release.version}):
+          https://git-wip-us.apache.org/repos/asf?p=incubator-streams-examples.git;a=commit;h=...
+
+          Maven staging repo:
+          https://repository.apache.org/content/repositories/${release.master.repository}
+          https://repository.apache.org/content/repositories/${release.project.repository}
+          https://repository.apache.org/content/repositories/${release.examples.repository}
+
+          Source releases:
+          https://repository.apache.org/content/repositories/${release.master.repository}/org/apache/streams/streams-master/${release.version}/streams-master-${release.version}-source-release.zip
+          https://repository.apache.org/content/repositories/${release.project.repository}/org/apache/rave/rave-project/${release.version}/streams-project-${release.version}-incubating-source-release.zip
+          https://repository.apache.org/content/repositories/${release.project.repository}/org/apache/rave/rave-project/${release.version}/streams-project-${release.version}-incubating-source-release.zip
+
+          Checksums of streams-master-${release.version}-source-release.zip:
+          MD5: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          SHA1: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+          Release artifacts are signed with the following key:
+          https://people.apache.org/keys/committer/...
+
+          Please take the time to verify the artifacts before casting your vote.
+
+          Vote will be open for 72 hours.
+
+          [ ] +1  approve
+          [ ] +0  no opinion
+          [ ] -1  disapprove (and reason why)

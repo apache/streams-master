@@ -253,7 +253,7 @@
         </release.repository.url>
 
         <!-- Plugin and Plugin Dependency Versions -->
-        <apache-rat.plugin.version>0.11</apache-rat.plugin.version>
+        <apache-rat.plugin.version>0.12</apache-rat.plugin.version>
         <build-helper.plugin.version>1.8</build-helper.plugin.version>
         <bundle.plugin.version>1.4.3</bundle.plugin.version>
         <compiler.plugin.version>3.0</compiler.plugin.version>
@@ -1064,6 +1064,7 @@
                                 <exclude>**/*.iml</exclude>
                                 <exclude>**/*.ini</exclude>
                                 <exclude>**/*.jar</exclude>
+                                <exclude>**/*.svg</exclude>
                                 <exclude>dependency-reduced-pom.xml</exclude>
                                 <exclude>rat.txt</exclude>
                             </excludes>
