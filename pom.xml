@@ -32,7 +32,7 @@
     <name>Apache Streams :: streams-master</name>
     <description>Apache Streams Master Pom</description>
     <packaging>pom</packaging>
-    <version>0.3-incubating</version>
+    <version>0.4-incubating-SNAPSHOT</version>
 
     <inceptionYear>2012</inceptionYear>
 
@@ -51,7 +51,7 @@
         <connection>scm:git:git@github.com:apache/incubator-streams-master.git</connection>
         <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-streams-master.git</developerConnection>
         <url>scm:git:git@github.com:apache/incubator-streams-master.git</url>
-      <tag>streams-master-0.3-incubating</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>
