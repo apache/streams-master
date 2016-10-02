@@ -104,13 +104,27 @@ As an alternative to releasing separately, the projects MAY be released together
      5. After the vote has been open for at least 72 hours, has at least three +1 PMC votes and no -1 votes, then post the results to the vote thread by -
          * reply to the initial email and prepend to the original subject "[RESULT]"
          * Include a list of everyone who voted +1, 0 or -1.
-     6. If there are fewer than 3 +1 (binding) votes from IPMC members, submit a vote to general@incubator.apache.org requesting additional IPMC member votes.
-12. Finalizing a release
-    1. Promote the staged nexus artifacts  
-        * https://repository.apache.org/index.html
-        * Staging repositories (under Build Promotion) --> Name column --> org.apache.streams
-        * Click checkbox of the closed staging repo (org.apache.streams-XXX) and select Release.
-    2. Copy the source artifacts over to the distribution area  
+     6. Promote the staged nexus artifacts  
+         * https://repository.apache.org/index.html
+         * Staging repositories (under Build Promotion) --> Name column --> org.apache.streams
+         * Click checkbox of the closed staging repo (org.apache.streams-XXX) and select Release.
+13. Put the release candidate up for an IPMC vote if there are fewer than 3 +1 (binding) votes from IPMC members
+    1. Copy the source artifacts over to the release dev area     
+
+            svn co https://dist.apache.org/repos/dist/dev/incubator/streams ./streams-dev  (KEEP this directory until after the release process has been completed)
+            cd ./streams-dev
+            mkdir ${project.version}
+            cd ./${project.version}
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip    
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.asc   
+            wget https://repository.apache.org/content/repositories/releases/org/apache/streams/${project.name}/${project.version}/${project.name}-${project.version}-source-release.zip.md5   
+            svn add ${project.name}-*
+            svn commit -m "Committing Source Release for ${project.name}-${project.version}
+    
+    2. Submit a vote to general@incubator.apache.org requesting additional IPMC member votes.
+
+14. Complete the release
+    1. Copy the source artifacts over to the distribution area  
 
             svn co https://dist.apache.org/repos/dist/release/incubator/streams/releases ./streams-releases  (KEEP this directory until after the release process has been completed)
             cd ./streams-releases
@@ -131,7 +145,7 @@ As an alternative to releasing separately, the projects MAY be released together
     4. Update the staged website
         *  Update the downloads page (downloads.md) to add new version using the mirrored URLs
         *  Modify the URL for the prior release to the archived URL for the release
-    5.  Publish the website (see [website](website.html "Website Management")
+    5.  Publish the website (see [website](website.html "Website Management"))
         *  WAIT 24hrs after committing releases for mirrors to replicate
         *  Publish updates to the download page
     6.  Delete the prior versions
