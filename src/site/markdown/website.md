@@ -74,7 +74,7 @@ The first time a specific site is being published for this version, you must cre
     svn add site/${project.version}/${project.artifactId}
     svn commit -m "svn add site/${project.version}/${project.artifactId}"
 
-If you are published over an existing snapshot, you must first remove the existing version and recreate an empty directory.
+If you are published over an existing snapshot, you may need to first remove the existing version and recreate an empty directory.
 
     rm -rf site/${project.version}/${project.artifactId}
     svn delete site/${project.version}/${project.artifactId}
@@ -83,7 +83,7 @@ If you are published over an existing snapshot, you must first remove the existi
     svn add site/${project.version}/${project.artifactId}
     svn commit -m "svn add site/${project.version}/${project.artifactId}"
 
-The folder must exist and be empty for the publish steps to succeed.
+In general however the scm plugin is smart enough to just add new resources and commit changes.
 
 If you are publishing a release, it's appropriate to delete the site snapshots related to the prior releases.
 
@@ -120,13 +120,15 @@ Then, generate the site that will be published
      
     mvn clean generate-sources package -Dmaven.test.skip.exec=true site:site site:stage
     
-At this point you can open target/staging/index.html and do a sanity check on the site you intend to publish.
+Double-check the logs and determine where exactly the staged site is located on your local drive.
+
+At this point you can open target/staging/index.html (or wherever) and do a basic sanity check on the site you intend to publish.
 
 Finally, publish the site.
 
-    mvn scm-publish:publish-scm -Dscmpublish.pubScmUrl=scm:svn:https://svn.apache.org/repos/asf/incubator/streams/site/trunk/content/site/${project.version}/${project.artifactId}
+    mvn scm-publish:publish-scm
 
-You may need to provide -Dscmpublish.content= depending where the staging site directory winds up under target/
+You may need to provide -Dscmpublish.content=<> depending exactly where the staging site directory winds up.
 
 Note the revision number checked in at the bottom of the maven logs.
 
