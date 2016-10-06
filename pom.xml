@@ -559,7 +559,7 @@
                             <include>**/*ITs.java</include>
                             <include>**/*IT.java</include>
                         </includes>
-                        v<reportFormat>plain</reportFormat>
+                        <reportFormat>plain</reportFormat>
                     </configuration>
                     <dependencies>
                         <dependency>
