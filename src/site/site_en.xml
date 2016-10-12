@@ -54,7 +54,7 @@
             </script>
             ]]>
         </head>
-        <menu name="Overview" inherit="top">
+        <menu name="Overview">
             <item name="Overview" href="index.html" />
             <item name="Architecture" href="architecture.html" />
             <item name="Concepts" href="concepts.html" />
@@ -76,23 +76,16 @@
             <item name="Release Process" href="release.html" />
             <item name="Website Management" href="website.html" />
         </menu>
-        <menu name="Projects" inherit="top">
+        <menu name="Projects">
             <item name="streams-master" href="http://streams.incubator.apache.org/site/latest/streams-master" />
             <item name="streams-project" href="http://streams.incubator.apache.org/site/latest/streams-project" />
             <item name="streams-examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/" />
         </menu>
-        <menu name="Tutorial">
-            <item name="Build streams and streams-examples from source" href="tutorial/build.html" />
-            <item name="Create a local folder to configure streams" href="tutorial/environment.html"/>
-            <item name="Set up a local docker environment" href="tutorial/docker.html" />
-            <item name="Run a local database to store activity documents" href="tutorial/database.html" />
-            <item name="Run twitter-history-elasticsearch" href="http://streams.incubator.apache.org/site/latest/streams-examples/streams-examples-local/twitter-history-elasticsearch/index.html" />
-        </menu>
         <menu name="Learn More">
+            <item name="Run some official examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/index.html"  />
             <item name="Browse streams providers, processors, and persisters" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-contrib/index.html"  />
             <item name="View the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/index.html" />
             <item name="View java POJOs generated from the official Apache Streams jsonschema files" href="http://streams.incubator.apache.org/site/latest/streams-project/streams-pojo/apidocs/org/apache/streams/pojo/json/package-summary.html" />
-            <item name="Check out some additional examples" href="http://streams.incubator.apache.org/site/latest/streams-examples/index.html"  />
         </menu>
         <menu name="Other Resources">
             <item name="ActivityStreams Homepage" href="http://activitystrea.ms" />
