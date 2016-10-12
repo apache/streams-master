@@ -239,11 +239,12 @@
 
         <!-- Build Properties -->
         <java.version>1.7</java.version>
-        <scala.version>2.10</scala.version>
+        <scala.suffix>2.10</scala.suffix>
+        <scala.version>2.10.6</scala.version>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <streams.version>0.3-incubating-SNAPSHOT</streams.version>
+        <streams.version>0.4-incubating-SNAPSHOT</streams.version>
 
         <!-- Release Properties -->
         <snapshot.repository.url>
@@ -380,6 +381,9 @@
                                     </resource>
                                     <resource>
                                         <directory>src/site/diagrams</directory>
+                                    </resource>
+                                    <resource>
+                                        <directory>src/test/resources</directory>
                                     </resource>
                                 </resources>
                             </configuration>
@@ -908,7 +912,7 @@
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_${scala.version}</artifactId>
+                <artifactId>jackson-module-scala_${scala.suffix}</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
