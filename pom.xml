@@ -65,7 +65,7 @@
     </ciManagement>
 
     <prerequisites>
-        <maven>3.0.5</maven>
+        <maven>3.3.9</maven>
     </prerequisites>
 
     <mailingLists>
@@ -239,7 +239,7 @@
 
         <!-- Build Properties -->
         <java.version>1.8</java.version>
-        <maven.version>3.0.5</maven.version>
+        <maven.version>3.3.9</maven.version>
         <scala.suffix>2.10</scala.suffix>
         <scala.version>2.10.6</scala.version>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
