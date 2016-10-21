@@ -28,7 +28,7 @@
     </parent>
 
     <groupId>org.apache.streams</groupId>
-    <artifactId>streams-master</artifactId>
+    <artifactId>apache-streams-master</artifactId>
     <name>Apache Streams :: streams-master</name>
     <description>Apache Streams Master Pom</description>
     <packaging>pom</packaging>
