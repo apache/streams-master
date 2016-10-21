@@ -238,7 +238,7 @@
     <properties>
 
         <!-- Build Properties -->
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <scala.suffix>2.10</scala.suffix>
         <scala.version>2.10.6</scala.version>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
@@ -264,7 +264,7 @@
         <depgraph.plugin.version>1.0.3</depgraph.plugin.version>
         <docker.plugin.version>0.15.0</docker.plugin.version>
         <download.plugin.version>1.2.1</download.plugin.version>
-        <enforcer.plugin.version>1.3.1</enforcer.plugin.version>
+        <enforcer.plugin.version>1.4.1</enforcer.plugin.version>
         <failsafe.plugin.version>2.19.1</failsafe.plugin.version>
         <jar.plugin.version>2.6</jar.plugin.version>
         <javadoc.plugin.version>2.10.2</javadoc.plugin.version>
@@ -453,8 +453,8 @@
                             <configuration>
                                 <rules>
                                     <requireJavaVersion>
-                                        <message>Java 6 or higher is required to compile this module</message>
-                                        <version>${java.version}</version>
+                                        <message>Java 8 or higher is required to compile this module</message>
+                                        <version>[${java.version},)</version>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
@@ -786,6 +786,9 @@
                         WEB-INF/classes/META-INF/DEPENDENCIES
                     </packagingExcludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
 
         </plugins>
