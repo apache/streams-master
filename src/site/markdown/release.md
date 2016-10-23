@@ -45,11 +45,11 @@ As an alternative to releasing separately, the projects MAY be released together
     
 4. Verify the source has the required license headers before trying to release:
 
-        mvn -P apache-release clean rat:check -e -DskipTests
+        mvn -Papache-release clean apache-rat:check -e -DskipTests
     
 5. Do a dry run of the release:prepare step:  
 
-        mvn -P apache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
+        mvn -Papache-release release:prepare -DautoVersionSubmodules=true -DdryRun=true
 
     - The dry run will not commit any changes back to SCM and gives you the opportunity to verify that the release process will complete as expected. You will be prompted for the following information :
 
@@ -69,12 +69,12 @@ As an alternative to releasing separately, the projects MAY be released together
 
 7. Cleanup the release prepare files again:  
 
-        mvn -P apache-release release:clean
+        mvn -Papache-release release:clean
     
 8. Prepare the release
     1. Run the "release:prepare" step for real this time. You'll be prompted for the same version information.
     
-            mvn -P apache-release -U clean release:prepare -DautoVersionSubmodules=true
+            mvn -Papache-release -U clean release:prepare -DautoVersionSubmodules=true
     
     2. Backup (zip or tar) your local release candidate directory in case you need to rollback the release after the next step is performed.
 9. Perform the release

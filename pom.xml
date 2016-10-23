@@ -1173,6 +1173,7 @@
                                 <exclude>.gitignore</exclude>
                                 <exclude>.git/**</exclude>
                                 <exclude>.idea/**</exclude>
+                                <exclude>.java-version</exclude>
                                 <exclude>**/DEPENDENCIES</exclude>
                                 <exclude>**/LICENSE</exclude>
                                 <exclude>**/MANIFEST.MF</exclude>
