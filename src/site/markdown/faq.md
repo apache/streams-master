@@ -36,7 +36,7 @@ Apache Streams is not
 * only useful for projects fully dedicated to activity streams datasets
 
 The primary Streams git repository incubator-streams (org.apache.streams:streams-project) contains
- 
+
 * core interfaces and utilities
 * plugins for transforming schemas into source code and other artifacts
 * a library of modules for acquiring, transforming, and enriching data streams.
@@ -134,3 +134,5 @@ Then browse the 'Other Resources' menu to learn more about how streams works and
 * Write a new provider using an existing provider as a template.
 * Add new features (and / or tests) to an existing module you intend to use.
 * Build and contributing a new example.
+
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0

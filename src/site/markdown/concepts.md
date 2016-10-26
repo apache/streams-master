@@ -54,3 +54,4 @@ A Pipeline is a set of collection, processing, and storage components structured
 
 A Runtime is a module containing bindings that help setup and run a pipeline.  Runtimes may submit pipeline binaries to an existing cluster, or may launch the process(es) to execute the stream directly.  
 
+###### Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0
