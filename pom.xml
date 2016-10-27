@@ -458,7 +458,7 @@
                                         <version>[${java.version},)</version>
                                     </requireJavaVersion>
                                     <requireMavenVersion>
-                                        <message>Maven 3.0 or higher is required to compile this module</message>
+                                        <message>Maven 3.3.9 or higher is required to compile this module</message>
                                         <version>[${maven.version},)</version>
                                     </requireMavenVersion>
                                 </rules>
@@ -506,6 +506,46 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.rat</groupId>
+                    <artifactId>apache-rat-plugin</artifactId>
+                    <version>${apache-rat.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <excludes>
+                            <exclude>.git</exclude>
+                            <exclude>.gitignore</exclude>
+                            <exclude>.git/**</exclude>
+                            <exclude>.idea/**</exclude>
+                            <exclude>.java-version</exclude>
+                            <exclude>**/DEPENDENCIES</exclude>
+                            <exclude>**/LICENSE</exclude>
+                            <exclude>**/MANIFEST.MF</exclude>
+                            <exclude>**/NOTICE</exclude>
+                            <exclude>**/README.*</exclude>
+                            <exclude>**/target/**</exclude>
+                            <exclude>**/overlays/**</exclude>
+                            <exclude>**/src/test/resources/**/*.csv</exclude>
+                            <exclude>**/src/test/resources/**/*.tsv</exclude>
+                            <exclude>**/src/site/resources/**/*</exclude>
+                            <exclude>**/.gitignore</exclude>
+                            <exclude>**/*.properties</exclude>
+                            <exclude>**/*.iml</exclude>
+                            <exclude>**/*.ini</exclude>
+                            <exclude>**/*.jar</exclude>
+                            <exclude>**/*.svg</exclude>
+                            <exclude>dependency-reduced-pom.xml</exclude>
+                            <exclude>rat.txt</exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1156,46 +1196,6 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.rat</groupId>
-                        <artifactId>apache-rat-plugin</artifactId>
-                        <version>${apache-rat.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <excludes>
-                                <exclude>.git</exclude>
-                                <exclude>.gitignore</exclude>
-                                <exclude>.git/**</exclude>
-                                <exclude>.idea/**</exclude>
-                                <exclude>.java-version</exclude>
-                                <exclude>**/DEPENDENCIES</exclude>
-                                <exclude>**/LICENSE</exclude>
-                                <exclude>**/MANIFEST.MF</exclude>
-                                <exclude>**/NOTICE</exclude>
-                                <exclude>**/README.*</exclude>
-                                <exclude>**/target/**</exclude>
-                                <exclude>**/overlays/**</exclude>
-                                <exclude>**/src/main/resources/**</exclude>
-                                <exclude>**/src/test/resources/**</exclude>
-                                <exclude>**/.gitignore</exclude>
-                                <exclude>**/*.md</exclude>
-                                <exclude>**/*.properties</exclude>
-                                <exclude>**/*.iml</exclude>
-                                <exclude>**/*.ini</exclude>
-                                <exclude>**/*.jar</exclude>
-                                <exclude>**/*.svg</exclude>
-                                <exclude>dependency-reduced-pom.xml</exclude>
-                                <exclude>rat.txt</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
@@ -1238,17 +1238,31 @@
                         <artifactId>maven-site-plugin</artifactId>
                     </plugin>
                     <plugin>
+                        <groupId>org.apache.rat</groupId>
+                        <artifactId>apache-rat-plugin</artifactId>
+                    </plugin>
+                    <plugin>
                         <groupId>com.github.ferstl</groupId>
                         <artifactId>depgraph-maven-plugin</artifactId>
                         <version>${depgraph.plugin.version}</version>
                     </plugin>
-		                <plugin>
-                        <groupId>org.apache.rat</groupId>
-                        <artifactId>apache-rat-plugin</artifactId>
-                        <version>${apache-rat.plugin.version}</version>
-                    </plugin>
                 </plugins>
             </reporting>
+        </profile>
+        <profile>
+            <id>contrib-check</id>
+            <properties>
+                <skipTests>false</skipTests>
+                <maven.test.skip>false</maven.test.skip>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.rat</groupId>
+                        <artifactId>apache-rat-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
