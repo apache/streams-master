@@ -32,7 +32,7 @@
     <name>Apache Streams :: streams-master</name>
     <description>Apache Streams Master Pom</description>
     <packaging>pom</packaging>
-    <version>0.5-incubating-SNAPSHOT</version>
+    <version>0.4-incubating-SNAPSHOT</version>
 
     <inceptionYear>2012</inceptionYear>
 
