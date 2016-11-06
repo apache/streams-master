@@ -259,6 +259,7 @@
         <apache-rat.plugin.version>0.12</apache-rat.plugin.version>
         <build-helper.plugin.version>1.8</build-helper.plugin.version>
         <bundle.plugin.version>1.4.3</bundle.plugin.version>
+        <checkstyle.plugin.version>2.17</checkstyle.plugin.version>
         <compiler.plugin.version>3.0</compiler.plugin.version>
         <clean.plugin.version>2.6</clean.plugin.version>
         <dependency.plugin.version>2.10</dependency.plugin.version>
@@ -835,7 +836,26 @@
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <configLocation>google_checks.xml</configLocation>
+                            <encoding>UTF-8</encoding>
+                            <consoleOutput>true</consoleOutput>
+                            <failsOnError>false</failsOnError>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
@@ -1058,6 +1078,21 @@
 
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
