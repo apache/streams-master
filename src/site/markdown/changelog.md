@@ -363,7 +363,7 @@ Licensed under Apache License 2.0 - http://www.apache.org/licenses/LICENSE-2.0
 </li>
 <li>[<a href='https://issues.apache.org/jira/browse/STREAMS-318'>STREAMS-318</a>] -         remove test files whose license may not be compatible with an Apache release (google-gplus)
 </li>
-<li>[<a href='https://issues.apache.org/jira/browse/STREAMS-319'>STREAMS-319</a>] -         update <developer> info in the pom with active contributors
+<li>[<a href='https://issues.apache.org/jira/browse/STREAMS-319'>STREAMS-319</a>] -         update &lt;developer&gt; info in the pom with active contributors
 </li>
 <li>[<a href='https://issues.apache.org/jira/browse/STREAMS-331'>STREAMS-331</a>] -         Set up build of master and pull requested branches on travis-ci.org
 </li>
