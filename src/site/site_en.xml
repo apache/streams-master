@@ -74,6 +74,7 @@
             <item name="Plugin Management" href="plugin-management.html" />
             <item name="Release Setup" href="release-setup.html" />
             <item name="Release Process" href="release.html" />
+            <item name="Changelog" href="changelog.html" />
             <item name="Website Management" href="website.html" />
         </menu>
         <menu name="Projects">
