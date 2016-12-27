@@ -69,7 +69,7 @@ Browse the "Project Modules" index of streams-project to find artifacts you migh
 
 <div class="section">
 
-<h3><a name="Grails"></a>Grails</h3><a name="Grails"></a>
+<h3><a name="Gradle"></a>Gradle</h3><a name="Gradle"></a>
 
 <div class="source"><pre class="prettyprint">compile 'org.apache.streams:streams-master:0.3-incubating-SNAPSHOT'</pre>
 
